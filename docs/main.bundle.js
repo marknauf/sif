@@ -84,7 +84,7 @@ var AppRoutingModule = (function () {
     function AppRoutingModule() {
     }
     AppRoutingModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["K" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_router__["d" /* RouterModule */].forRoot(routes)
             ],
@@ -143,7 +143,7 @@ var AppComponent = (function () {
     function AppComponent() {
     }
     AppComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
             template: __webpack_require__("../../../../../src/app/app.component.html"),
             styles: [__webpack_require__("../../../../../src/app/app.component.css")]
@@ -178,12 +178,14 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_docpage_docpage_docpage_component__ = __webpack_require__("../../../../../src/app/pages/docpage/docpage/docpage.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__nebular_theme__ = __webpack_require__("../../../../@nebular/theme/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_d3_ng2_service__ = __webpack_require__("../../../../d3-ng2-service/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_documents_documents_documents_component__ = __webpack_require__("../../../../../src/app/pages/documents/documents/documents.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_cdk_table__ = __webpack_require__("../../../cdk/esm5/table.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_d3graph_d3graph_component__ = __webpack_require__("../../../../../src/app/pages/d3graph/d3graph.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts__ = __webpack_require__("../../../../@swimlane/ngx-charts/release/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__angular_material__ = __webpack_require__("../../../material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_documents_documents_documents_component__ = __webpack_require__("../../../../../src/app/pages/documents/documents/documents.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_cdk_table__ = __webpack_require__("../../../cdk/esm5/table.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_d3graph_d3graph_component__ = __webpack_require__("../../../../../src/app/pages/d3graph/d3graph.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -212,45 +214,46 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var DemoMaterialModule = (function () {
     function DemoMaterialModule() {
     }
     DemoMaterialModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["K" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["NgModule"])({
             exports: [
-                __WEBPACK_IMPORTED_MODULE_20__angular_cdk_table__["m" /* CdkTableModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["a" /* MatAutocompleteModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["b" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["c" /* MatButtonToggleModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["d" /* MatCardModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["e" /* MatCheckboxModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["f" /* MatChipsModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["A" /* MatStepperModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["g" /* MatDatepickerModule */],
+                __WEBPACK_IMPORTED_MODULE_21__angular_cdk_table__["m" /* CdkTableModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["a" /* MatAutocompleteModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["b" /* MatButtonModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["c" /* MatButtonToggleModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["d" /* MatCardModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["e" /* MatCheckboxModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["f" /* MatChipsModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["A" /* MatStepperModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["g" /* MatDatepickerModule */],
                 __WEBPACK_IMPORTED_MODULE_6__angular_flex_layout__["a" /* FlexLayoutModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["h" /* MatDialogModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["i" /* MatExpansionModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["j" /* MatGridListModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["k" /* MatIconModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["l" /* MatInputModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["m" /* MatListModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["n" /* MatMenuModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["o" /* MatNativeDateModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["p" /* MatPaginatorModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["q" /* MatProgressBarModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["r" /* MatProgressSpinnerModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["s" /* MatRadioModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["t" /* MatRippleModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["u" /* MatSelectModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["v" /* MatSidenavModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["x" /* MatSliderModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["w" /* MatSlideToggleModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["y" /* MatSnackBarModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["z" /* MatSortModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["B" /* MatTableModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["C" /* MatTabsModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["D" /* MatToolbarModule */],
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["E" /* MatTooltipModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["h" /* MatDialogModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["i" /* MatExpansionModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["j" /* MatGridListModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["k" /* MatIconModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["l" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["m" /* MatListModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["n" /* MatMenuModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["o" /* MatNativeDateModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["p" /* MatPaginatorModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["q" /* MatProgressBarModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["r" /* MatProgressSpinnerModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["s" /* MatRadioModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["t" /* MatRippleModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["u" /* MatSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["v" /* MatSidenavModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["x" /* MatSliderModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["w" /* MatSlideToggleModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["y" /* MatSnackBarModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["z" /* MatSortModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["B" /* MatTableModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["C" /* MatTabsModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["D" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["E" /* MatTooltipModule */],
             ],
             declarations: []
         })
@@ -262,21 +265,22 @@ var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["K" /* NgModule */])({
+        Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["NgModule"])({
             imports: [
-                __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["BrowserModule"],
                 __WEBPACK_IMPORTED_MODULE_14__nebular_theme__["a" /* NbThemeModule */].forRoot({ name: 'default' }),
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_7__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_12_ng2_google_charts__["a" /* Ng2GoogleChartsModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_forms__["c" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_19__angular_http__["a" /* HttpModule */],
+                __WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts__["NgxChartsModule"],
+                __WEBPACK_IMPORTED_MODULE_20__angular_http__["a" /* HttpModule */],
                 DemoMaterialModule,
-                __WEBPACK_IMPORTED_MODULE_16__angular_material__["o" /* MatNativeDateModule */],
+                __WEBPACK_IMPORTED_MODULE_17__angular_material__["o" /* MatNativeDateModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_forms__["h" /* ReactiveFormsModule */],
             ],
-            declarations: [__WEBPACK_IMPORTED_MODULE_17__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_8__pages_reports_reports_reports_component__["a" /* ReportsComponent */], __WEBPACK_IMPORTED_MODULE_11__pages_annual_annual_annual_component__["a" /* AnnualComponent */], __WEBPACK_IMPORTED_MODULE_13__pages_docpage_docpage_docpage_component__["a" /* DocPageComponent */], __WEBPACK_IMPORTED_MODULE_21__pages_d3graph_d3graph_component__["a" /* D3graphComponent */], __WEBPACK_IMPORTED_MODULE_10__pages_projects_projects_projects_component__["a" /* ProjectsComponent */], __WEBPACK_IMPORTED_MODULE_9__pages_home_home_home_component__["a" /* HomeComponent */], __WEBPACK_IMPORTED_MODULE_18__pages_documents_documents_documents_component__["a" /* DocumentsComponent */], __WEBPACK_IMPORTED_MODULE_1__filter_pipe__["a" /* FilterPipe */]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_17__app_component__["a" /* AppComponent */]],
+            declarations: [__WEBPACK_IMPORTED_MODULE_18__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_8__pages_reports_reports_reports_component__["a" /* ReportsComponent */], __WEBPACK_IMPORTED_MODULE_11__pages_annual_annual_annual_component__["a" /* AnnualComponent */], __WEBPACK_IMPORTED_MODULE_13__pages_docpage_docpage_docpage_component__["a" /* DocPageComponent */], __WEBPACK_IMPORTED_MODULE_22__pages_d3graph_d3graph_component__["a" /* D3graphComponent */], __WEBPACK_IMPORTED_MODULE_10__pages_projects_projects_projects_component__["a" /* ProjectsComponent */], __WEBPACK_IMPORTED_MODULE_9__pages_home_home_home_component__["a" /* HomeComponent */], __WEBPACK_IMPORTED_MODULE_19__pages_documents_documents_documents_component__["a" /* DocumentsComponent */], __WEBPACK_IMPORTED_MODULE_1__filter_pipe__["a" /* FilterPipe */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_18__app_component__["a" /* AppComponent */]],
             providers: [__WEBPACK_IMPORTED_MODULE_15_d3_ng2_service__["a" /* D3Service */]]
         })
     ], AppModule);
@@ -322,7 +326,7 @@ var FilterPipe = (function () {
         return value;
     };
     FilterPipe = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["V" /* Pipe */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
             name: 'FilterPipe',
         })
     ], FilterPipe);
@@ -387,7 +391,7 @@ var AnnualComponent = (function () {
     AnnualComponent.prototype.ngOnInit = function () {
     };
     AnnualComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-annual',
             template: __webpack_require__("../../../../../src/app/pages/annual/annual/annual.component.html"),
             styles: [__webpack_require__("../../../../../src/app/pages/annual/annual/annual.component.css")]
@@ -422,7 +426,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/pages/d3graph/d3graph.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div align=\"center\">\n\n  <h1 style= \"margin-top: 15px; margin-bottom: 20px\"> Strategic Initatives Fund Dashboard</h1>\n\n  <div>\n    <button mat-raised-button style=\"margin-bottom: 20px;\" (click)=\"onBack()\"> Go Back </button>\n  </div>\n\n\n  <div class=\"row\" style=\"margin-top: 15px\">\n    <div class=\"col-md-4\" style=\"padding: 0\">\n      Metric #1\n    </div>\n    <div class=\"col-md-4\" style=\"padding: 0\">\n      Metric #2\n    </div>\n    <div class=\"col-md-4\" style=\"padding: 0\">\n      Metric #3\n    </div>\n  </div>\n\n\n  <div class=\"row\" style=\"margin-top: 35px\">\n    <div class=\"col-md-4\">\n      <svg width=\"480\" height=\"300\"></svg>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div align=\"center\">\n\n<div style=\"margin-bottom:30px; margin-top:15px\">\n  <h1 >\n      Strategic Initatives Fund Dashboard\n    </h1>\n</div>\n\n  <div>\n    <button mat-raised-button style=\"margin-bottom: 30px;\" (click)=\"onBack()\"> Go Back </button>\n  </div>\n\n  <div class=\"row\" style=\"margin-top: 15px; margin-bottom:50px\">\n\n<div class=\"col-md-4\" style=\"padding: 0\">\nYear First Funded:\n<br>\n2010\n</div>\n<div class=\"col-md-4\" style=\"padding: 0\">\nFunding Since Inception:\n<br>\n$795,000\n</div>\n<div class=\"col-md-4\" style=\"padding: 0\">\nYear Funding Expires:\n<br>\n2020\n</div>\n\n  </div>\n\n  <ngx-charts-line-chart\n    [view]=\"view\"\n    [scheme]=\"colorScheme\"\n    [results]=\"multi\"\n    [gradient]=\"gradient\"\n    [xAxis]=\"showXAxis\"\n    [yAxis]=\"showYAxis\"\n    [legend]=\"showLegend\"\n    [showXAxisLabel]=\"showXAxisLabel\"\n    [showYAxisLabel]=\"showYAxisLabel\"\n    [xAxisLabel]=\"xAxisLabel\"\n    [yAxisLabel]=\"yAxisLabel\"\n    [autoScale]=\"autoScale\"\n    (select)=\"onSelect($event)\">\n  </ngx-charts-line-chart>\n\n\n</div>\n"
 
 /***/ }),
 
@@ -431,9 +435,9 @@ module.exports = "<div align=\"center\">\n\n  <h1 style= \"margin-top: 15px; mar
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return D3graphComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_d3_ng2_service__ = __webpack_require__("../../../../d3-ng2-service/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__data__ = __webpack_require__("../../../../../src/app/pages/d3graph/data.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -443,135 +447,96 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+//our root app component
 
 
 
 var D3graphComponent = (function () {
-    function D3graphComponent(element, router, ngZone, d3Service) {
+    function D3graphComponent(router) {
         this.router = router;
-        this.ngZone = ngZone;
-        this.d3 = d3Service.getD3();
-        this.parentNativeElement = element.nativeElement;
+        this.view = [700, 400];
+        // options
+        this.showXAxis = true;
+        this.showYAxis = true;
+        this.gradient = false;
+        this.showLegend = true;
+        this.showXAxisLabel = true;
+        this.xAxisLabel = 'Year';
+        this.showYAxisLabel = true;
+        this.yAxisLabel = 'Funding';
+        this.colorScheme = {
+            domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+        };
+        // line, area
+        this.autoScale = true;
+        Object.assign(this, { single: __WEBPACK_IMPORTED_MODULE_0__data__["b" /* single */], multi: __WEBPACK_IMPORTED_MODULE_0__data__["a" /* multi */] });
     }
-    D3graphComponent.prototype.ngOnDestroy = function () {
-        if (this.d3Svg.empty && !this.d3Svg.empty()) {
-            this.d3Svg.selectAll('*').remove();
-        }
+    D3graphComponent.prototype.onSelect = function (event) {
+        console.log(event);
     };
     D3graphComponent.prototype.ngOnInit = function () {
-        var self = this;
-        var d3 = this.d3;
-        var d3ParentElement;
-        var d3Svg;
-        var d3G;
-        var width;
-        var height;
-        var random;
-        var sqrt3;
-        var points0;
-        var points1;
-        var points2;
-        var points;
-        var k;
-        var x0;
-        var y0;
-        var x;
-        var y;
-        var z;
-        var xAxis;
-        var yAxis;
-        var brush;
-        var idleTimeout;
-        var idleDelay;
-        function brushended() {
-            var e = d3.event;
-            var s = e.selection;
-            if (!s) {
-                if (!idleTimeout) {
-                    self.ngZone.runOutsideAngular(function () {
-                        idleTimeout = window.setTimeout(idled, idleDelay);
-                    });
-                    return idleTimeout;
-                }
-                x.domain(x0);
-                y.domain(y0);
-            }
-            else {
-                x.domain([s[0][0], s[1][0]].map(x.invert, x));
-                y.domain([s[1][1], s[0][1]].map(y.invert, y));
-                d3Svg.select('.brush').call(brush.move, null);
-            }
-            zoom();
-        }
-        function idled() {
-            idleTimeout = null;
-        }
-        function zoom() {
-            var t = d3Svg.transition().duration(750);
-            d3Svg.select('.axis--x').transition(t).call(xAxis);
-            d3Svg.select('.axis--y').transition(t).call(yAxis);
-            d3Svg.selectAll('circle').transition(t)
-                .attr('cx', function (d) { return x(d[0]); })
-                .attr('cy', function (d) { return y(d[1]); });
-        }
-        if (this.parentNativeElement !== null) {
-            d3ParentElement = d3.select(this.parentNativeElement);
-            d3Svg = this.d3Svg = d3ParentElement.select('svg');
-            width = +d3Svg.attr('width');
-            height = +d3Svg.attr('height');
-            d3G = d3Svg.append('g');
-            random = d3.randomNormal(0, 0.2);
-            sqrt3 = Math.sqrt(3);
-            points0 = d3.range(300).map(function () { return [random() + sqrt3, random() + 1, 0]; });
-            points1 = d3.range(300).map(function () { return [random() - sqrt3, random() + 1, 1]; });
-            points2 = d3.range(300).map(function () { return [random(), random() - 1, 2]; });
-            points = d3.merge([points0, points1, points2]);
-            k = height / width;
-            x0 = [-4.5, 4.5];
-            y0 = [-4.5 * k, 4.5 * k];
-            x = d3.scaleLinear().domain(x0).range([0, width]);
-            y = d3.scaleLinear().domain(y0).range([height, 0]);
-            z = d3.scaleOrdinal(d3.schemeCategory10);
-            xAxis = d3.axisTop(x).ticks(12);
-            yAxis = d3.axisRight(y).ticks(12 * height / width);
-            brush = d3.brush().on('end', brushended);
-            idleDelay = 350;
-            d3Svg.selectAll('circle')
-                .data(points)
-                .enter().append('circle')
-                .attr('cx', function (d) { return x(d[0]); })
-                .attr('cy', function (d) { return y(d[1]); })
-                .attr('r', 2.5)
-                .attr('fill', function (d) { return z(d[2]); });
-            d3Svg.append('g')
-                .attr('class', 'axis axis--x')
-                .attr('transform', 'translate(0,' + (height - 10) + ')')
-                .call(xAxis);
-            d3Svg.append('g')
-                .attr('class', 'axis axis--y')
-                .attr('transform', 'translate(10,0)')
-                .call(yAxis);
-            d3Svg.selectAll('.domain')
-                .style('display', 'none');
-            d3Svg.append('g')
-                .attr('class', 'brush')
-                .call(brush);
-        }
     };
     D3graphComponent.prototype.onBack = function () {
         this.router.navigate(['/', 'home']);
     };
     D3graphComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'app-brush-zoom-2',
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+            selector: 'd3graph-app',
             template: __webpack_require__("../../../../../src/app/pages/d3graph/d3graph.component.html"),
             styles: [__webpack_require__("../../../../../src/app/pages/d3graph/d3graph.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* NgZone */], __WEBPACK_IMPORTED_MODULE_2_d3_ng2_service__["a" /* D3Service */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]])
     ], D3graphComponent);
     return D3graphComponent;
 }());
 
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/pages/d3graph/data.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return single; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return multi; });
+var single = [
+    {
+        "name": "ASU Digital Prep",
+        "value": 8940000
+    },
+];
+var multi = [
+    {
+        "name": "ASU Digital Prep",
+        "series": [
+            {
+                "name": "2010",
+                "value": 100000
+            },
+            {
+                "name": "2011",
+                "value": 125000
+            },
+            {
+                "name": "2012",
+                "value": 130000
+            },
+            {
+                "name": "2013",
+                "value": 150000
+            },
+            {
+                "name": "2014",
+                "value": 200000
+            },
+            {
+                "name": "2015",
+                "value": 180000
+            },
+        ]
+    },
+];
 
 
 /***/ }),
@@ -678,7 +643,7 @@ var DocPageComponent = (function () {
     DocPageComponent.prototype.ngOnInit = function () {
     };
     DocPageComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-docpage',
             template: __webpack_require__("../../../../../src/app/pages/docpage/docpage/docpage.component.html"),
             styles: [__webpack_require__("../../../../../src/app/pages/docpage/docpage/docpage.component.css")]
@@ -748,7 +713,7 @@ var DocumentsComponent = (function () {
     DocumentsComponent.prototype.ngOnInit = function () {
     };
     DocumentsComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-documents',
             template: __webpack_require__("../../../../../src/app/pages/documents/documents/documents.component.html"),
             styles: [__webpack_require__("../../../../../src/app/pages/documents/documents/documents.component.css")]
@@ -904,7 +869,7 @@ var HomeComponent = (function () {
     HomeComponent.prototype.ngOnInit = function () {
     };
     HomeComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-home',
             template: __webpack_require__("../../../../../src/app/pages/home/home/home.component.html"),
             styles: [__webpack_require__("../../../../../src/app/pages/home/home/home.component.css")]
@@ -1002,7 +967,7 @@ var ProjectsComponent = (function () {
     ProjectsComponent.prototype.ngOnInit = function () {
     };
     ProjectsComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-projects',
             template: __webpack_require__("../../../../../src/app/pages/projects/projects/projects.component.html"),
             styles: [__webpack_require__("../../../../../src/app/pages/projects/projects/projects.component.css")]
@@ -1098,7 +1063,7 @@ var ReportsComponent = (function () {
     ReportsComponent.prototype.ngOnInit = function () {
     };
     ReportsComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-reports',
             template: __webpack_require__("../../../../../src/app/pages/reports/reports/reports.component.html"),
             styles: [__webpack_require__("../../../../../src/app/pages/reports/reports/reports.component.css")]
@@ -1138,7 +1103,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment */].production) {
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* enableProdMode */])();
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["enableProdMode"])();
 }
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });

@@ -1,28 +1,50 @@
 <div align="center">
 
-  <h1 style= "margin-top: 15px; margin-bottom: 20px"> Strategic Initatives Fund Dashboard</h1>
+<div style="margin-bottom:30px; margin-top:15px">
+  <h1 >
+      Strategic Initatives Fund Dashboard
+    </h1>
+</div>
 
   <div>
-    <button mat-raised-button style="margin-bottom: 20px;" (click)="onBack()"> Go Back </button>
+    <button mat-raised-button style="margin-bottom: 30px;" (click)="onBack()"> Go Back </button>
   </div>
 
+  <div class="row" style="margin-top: 15px; margin-bottom:50px">
 
-  <div class="row" style="margin-top: 15px">
-    <div class="col-md-4" style="padding: 0">
-      Metric #1
-    </div>
-    <div class="col-md-4" style="padding: 0">
-      Metric #2
-    </div>
-    <div class="col-md-4" style="padding: 0">
-      Metric #3
-    </div>
+<div class="col-md-4" style="padding: 0">
+Year First Funded:
+<br>
+2010
+</div>
+<div class="col-md-4" style="padding: 0">
+Funding Since Inception:
+<br>
+$795,000
+</div>
+<div class="col-md-4" style="padding: 0">
+Year Funding Expires:
+<br>
+2020
+</div>
+
   </div>
 
+  <ngx-charts-line-chart
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="multi"
+    [gradient]="gradient"
+    [xAxis]="showXAxis"
+    [yAxis]="showYAxis"
+    [legend]="showLegend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [autoScale]="autoScale"
+    (select)="onSelect($event)">
+  </ngx-charts-line-chart>
 
-  <div class="row" style="margin-top: 35px">
-    <div class="col-md-4">
-      <svg width="480" height="300"></svg>
-    </div>
-  </div>
+
 </div>

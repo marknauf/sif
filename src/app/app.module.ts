@@ -14,6 +14,7 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { DocPageComponent } from './pages/docpage/docpage/docpage.component'
 import { NbThemeModule } from '@nebular/theme';
 import { D3Service } from 'd3-ng2-service'; // <-- import statement
+import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -101,6 +102,7 @@ export class DemoMaterialModule { }
     AppRoutingModule,
     Ng2GoogleChartsModule,
     FormsModule,
+    NgxChartsModule,
     HttpModule,
     DemoMaterialModule,
     MatNativeDateModule,
