@@ -1,0 +1,39 @@
+<div align="center">
+
+  <h1>
+      Strategic Initatives Fund Dashboard
+    </h1>
+
+  <div>
+    <button mat-raised-button style="margin-bottom: 20px;" (click)="onBack()"> Go Back </button>
+  </div>
+
+  <div align="center" style="margin-bottom:20px">
+      <mat-form-field class="example-full-width">
+      <input matInput [(ngModel)]="queryString" placeholder="Type to search..." id="search" type="text" >
+    </mat-form-field>
+    <!-- <input type="text" [(ngModel)]="queryString" id="search" placeholder="Type to search..."> -->
+  </div>
+  <div class="container" fxLayout fxLayoutAlign="center" fxLayoutWrap="wrap" fxLayoutGap="0" fxLayout.xs="column" fxLayoutGap.xs="5px" fxLayout.sm="column" fxLayoutGap.sm="5px">
+    <mat-card *ngFor="let state of states | FilterPipe: queryString : searchableList" class="example-card" fxFlex="34%">
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <mat-card-title><b>{{state.name}}</b></mat-card-title>
+        <mat-card-subtitle>{{state.pi}}</mat-card-subtitle>
+      </mat-card-header>
+      <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+      <mat-card-content>
+        <p>
+          {{state.overview}}
+        </p>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button mat-button (click)="documents(state.id)">DOCUMENTS</button>
+         <button mat-button (click)="data(state.id)">DATA</button>
+      </mat-card-actions>
+
+    </mat-card>
+  </div>
+
+</div>

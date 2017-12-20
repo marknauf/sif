@@ -5,7 +5,11 @@
 }
 
 .example-full-width {
-  width: 100%;
+  width: 70%;
+}
+
+.mat-card-content{
+        min-height: 115px;
 }
 
 .example-card {
