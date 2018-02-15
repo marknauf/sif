@@ -2,7 +2,7 @@
 
 <div style="margin-bottom:30px; margin-top:15px">
   <h1 >
-      Strategic Initatives Fund Dashboard
+      {{this.states[this.initiativeID].Initiative}}
     </h1>
 </div>
 
@@ -15,17 +15,17 @@
 <div class="col-md-4" style="padding: 0">
 Year First Funded:
 <br>
-2010
+{{initative.FirstFund}}
 </div>
 <div class="col-md-4" style="padding: 0">
 Funding Since Inception:
 <br>
-$795,000
+{{initative.FromInceptionTo17}}
 </div>
 <div class="col-md-4" style="padding: 0">
 Year Funding Expires:
 <br>
-2020
+{{initative.Expires}}
 </div>
 
   </div>
@@ -33,7 +33,7 @@ Year Funding Expires:
   <ngx-charts-line-chart
     [view]="view"
     [scheme]="colorScheme"
-    [results]="multi"
+    [results]="data"
     [gradient]="gradient"
     [xAxis]="showXAxis"
     [yAxis]="showYAxis"
