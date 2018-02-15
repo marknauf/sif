@@ -8,8 +8,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { AppRoutingModule } from './app-routing.module';
 import { ReportsComponent } from './pages/reports/reports/reports.component'
 import { HomeComponent } from './pages/home/home/home.component'
-import { ProjectsComponent } from './pages/projects/projects/projects.component'
 import { AnnualComponent } from './pages/annual/annual/annual.component'
+import { ProjectsComponent } from './pages/projects/projects/projects.component'
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import { DocPageComponent } from './pages/docpage/docpage/docpage.component'
 import { NbThemeModule } from '@nebular/theme';
