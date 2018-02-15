@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   title: String;
   names: any;
   states: any;
+  dataTable: any;
   searchableList: any
   constructor(private router: Router) {
     this.title = "SIF Search";
@@ -7690,44 +7691,63 @@ export class HomeComponent implements OnInit {
         ]
       }
     ]
-console.log(test);
+    console.log(test);
   }
 
   treeChartData = {
     chartType: 'TreeMap',
+    // dataTable: [
+    //   ['Location', 'Parent', 'Market trade volume (size)', 'Market increase/decrease (color)'],
+    //   ['SIF Fund', null, 0, 0],
+    //   ['Policy', 'SIF Fund', 0, 0],
+    //   ['University Affairs', 'SIF Fund', 0, 0],
+    //   ['Social Sciences', 'SIF Fund', 0, 0],
+    //   ['Bio/Health', 'SIF Fund', 0, 0],
+    //   ['Media', 'SIF Fund', 0, 0],
+    //   ['Luminosity', 'Social Sciences', 30, -10],
+    //   ['Digital Prep', 'University Affairs', 52, 31],
+    //   ['ASU HabLab Center', 'Bio/Health', 24, 12],
+    //   ['Center for the Future of War', 'Policy', 16, -23],
+    //   ['Legislative Academy', 'Policy', 42, -11],
+    //   ['Mayo', 'Bio/Health', 31, -2],
+    //   ['Prescott Center', 'Social Sciences', 22, -13],
+    //   ['Translational Research Insitute', 'Policy', 17, 4],
+    //   ['Arizona Town Hall', 'University Affairs', 21, -5],
+    //   ['American Indian Initiatives', 'University Affairs', 36, 4],
+    //   ['Rennard Strickland Collection Project', 'Media', 20, -12],
+    //   ['CSI Assistant Director - Ruth Wylie', 'Media', 40, 63],
+    //   ['Jeffrey M. Cunningham, Professor of Practice', 'Media', 4, 34],
+    //   ['Public & Hybrid Organizations Center', 'Policy', 1, -5],
+    //   ['Bioscience Ethics, Policy, and Law', 'Bio/Health', 12, 24],
+    //   ['Computational History of Science', 'Social Sciences', 18, 13],
+    //   ['HOMER - Human Origins Migration Evol', 'Social Sciences', 11, -52],
+    //   ['Morrison Institute for Public Policy', 'Social Sciences', 21, 0],
+    //   ['Rodney Hero Center ', 'Social Sciences', 30, 43],
+    //   ['Cronkite School AZ PBS', 'Media', 12, 2],
+    //   ['Ed Lab Selingo', 'University Affairs', 10, 12],
+    //   ['Mandela Washington Fellowship', 'Policy', 8, 10]
+    // ],
     dataTable: [
       ['Location', 'Parent', 'Market trade volume (size)', 'Market increase/decrease (color)'],
       ['SIF Fund', null, 0, 0],
-      ['Policy', 'SIF Fund', 0, 0],
       ['University Affairs', 'SIF Fund', 0, 0],
-      ['Social Sciences', 'SIF Fund', 0, 0],
-      ['Bio/Health', 'SIF Fund', 0, 0],
+      ['Education', 'SIF Fund', 0, 0],
+      ['Sustainability', 'SIF Fund', 0, 0],
+      ['Entrepreneurship / Innovation', 'SIF Fund', 0, 0],
+      ['Computing & Informatics', 'SIF Fund', 0, 0],
       ['Media', 'SIF Fund', 0, 0],
-      ['Luminosity', 'Social Sciences', 11, 10],
-      ['Digital Prep', 'University Affairs', 52, 31],
-      ['ASU HabLab Center', 'Bio/Health', 24, 12],
-      ['Center for the Future of War', 'Policy', 16, -23],
-      ['Legislative Academy', 'Policy', 42, -11],
-      ['Mayo', 'Bio/Health', 31, -2],
-      ['Prescott Center', 'Social Sciences', 22, -13],
-      ['Translational Research Insitute', 'Policy', 17, 4],
-      ['Arizona Town Hall', 'University Affairs', 21, -5],
-      ['American Indian Initiatives', 'University Affairs', 36, 4],
-      ['Rennard Strickland Collection Project', 'Media', 20, -12],
-      ['CSI Assistant Director - Ruth Wylie', 'Media', 40, 63],
-      ['Jeffrey M. Cunningham, Professor of Practice', 'Media', 4, 34],
-      ['Public & Hybrid Organizations Center', 'Policy', 1, -5],
-      ['Bioscience Ethics, Policy, and Law', 'Bio/Health', 12, 24],
-      ['Computational History of Science', 'Social Sciences', 18, 13],
-      ['HOMER - Human Origins Migration Evol', 'Social Sciences', 11, -52],
-      ['Morrison Institute for Public Policy', 'Social Sciences', 21, 0],
-      ['Rodney Hero Center ', 'Social Sciences', 30, 43],
-      ['Cronkite School AZ PBS', 'Media', 12, 2],
-      ['Ed Lab Selingo', 'University Affairs', 10, 12],
-      ['Mandela Washington Fellowship', 'Policy', 8, 10]
+      ['Policy', 'SIF Fund', 0, 0],
+      ['Arts & Humanities', 'SIF Fund', 0, 0],
+      ['Social Sciences', 'SIF Fund', 0, 0],
+      ['Provost Investment Funds', 'SIF Fund', 0, 0],
+      ['Advanced Materials', 'SIF Fund', 0, 0],
+      ['BIO/ Health', 'SIF Fund', 0, 0],
+      ['Human Welfare & Care', 'SIF Fund', 0, 0],
+      ['Earth and Space Discovery & Exploration', 'SIF Fund', 0, 0],
     ],
     options: {},
   };
+
 
   pageStart: number = 0;
   pageEnd: number = 100;
@@ -7782,6 +7802,13 @@ console.log(test);
   }
 
   ngOnInit() {
+     for (var i = 0; i < this.states.length; i++) {
+          const addition = [this.states[i].Initiative, this.states[i].StratArea, this.states[i].FY2017 == 0 ? 0 : parseFloat(this.states[i].FY2017.replace(/,/g, '')), 0]
+
+
+          this.treeChartData.dataTable.push(addition)
+      }
+      console.log(this.treeChartData.dataTable)
   }
 
 }
