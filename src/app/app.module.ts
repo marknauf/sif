@@ -109,7 +109,7 @@ export class DemoMaterialModule { }
     ReactiveFormsModule,
   ],
 
-  declarations: [AppComponent, AnnualComponent, ReportsComponent, DocPageComponent, D3graphComponent, ProjectsComponent, HomeComponent, DocumentsComponent, FilterPipe],
+  declarations: [AnnualComponent, AppComponent, ReportsComponent, DocPageComponent, D3graphComponent, ProjectsComponent, HomeComponent, DocumentsComponent, FilterPipe],
   bootstrap: [AppComponent],
   providers: [D3Service]
 })
