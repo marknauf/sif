@@ -32,44 +32,8 @@ export class HomeComponent implements OnInit {
     let projects = require('../../data/projects.json');
     this.states = projects;
 
-        this.searchableList = ['Initiative', 'PI']
+        this.searchableList = ['Initiative', 'PI', 'Type']
   }
-
-  // test() {
-  //   console.log(this.states[1]);
-  //   var test = [
-  //     {
-  //       "name": "ASU Digital Prep",
-  //       "series": [
-  //         {
-  //           "name": "2010",
-  //           "value": this.states[1].FY2005
-  //         },
-  //         {
-  //           "name": "2011",
-  //           "value": 125000
-  //         },
-  //         {
-  //           "name": "2012",
-  //           "value": 130000
-  //         },
-  //         {
-  //           "name": "2013",
-  //           "value": 150000
-  //         },
-  //         {
-  //           "name": "2014",
-  //           "value": 200000
-  //         },
-  //         {
-  //           "name": "2015",
-  //           "value": 180000
-  //         },
-  //       ]
-  //     }
-  //   ]
-  //   console.log(test);
-  // }
 
   treeChartData = {
     chartType: 'TreeMap',
