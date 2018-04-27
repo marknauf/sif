@@ -15,6 +15,7 @@ export class DocumentsComponent implements OnInit {
   docID: any;
   url: any;
   states: any;
+  matchId: number;
   documents: any [];
   projects: any;
   constructor(private router: Router, route: ActivatedRoute, public sanitizer: DomSanitizer) {
@@ -22,10 +23,15 @@ export class DocumentsComponent implements OnInit {
     console.log(this.docID);
     this.initiativeID = route.snapshot.params['id'];
     this.initiativeID = (parseInt(this.initiativeID)-1).toString();
+    this.matchId = parseInt(route.snapshot.params['id']);
     this.sanitizer = sanitizer
 
     let projects = require('../../data/projects.json');
     this.states = projects;
+
+    this.initative = this.states.filter(
+         state => state.ID === this.matchId);
+
   }
 
   onBack() {
@@ -33,13 +39,13 @@ export class DocumentsComponent implements OnInit {
   }
   ngOnInit() {
 
-      this.initative = this.states[this.initiativeID]
+      // this.initative = this.states[this.initiativeID]
 
 
   }
 
   cleanURL() {
-     return this.sanitizer.bypassSecurityTrustResourceUrl(this.states[this.initiativeID].DropboxLink);
+     return this.sanitizer.bypassSecurityTrustResourceUrl(this.initative[0].DropboxLink);
    }
 
 }

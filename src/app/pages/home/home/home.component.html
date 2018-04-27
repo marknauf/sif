@@ -48,7 +48,7 @@
             <span style='position: absolute; left: 20px; bottom: 16px;'>
              {{state.Type}}
                 </span>
-        <button mat-button (click)="documents(state.ID)">DOCUMENTS</button>
+        <button *ngIf="state.DropboxLink" mat-button (click)="documents(state.ID)">DOCUMENTS</button>
         <button mat-button (click)="data(state.ID)">DATA</button>
     </div>
       </mat-card-actions>

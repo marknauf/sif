@@ -17,6 +17,7 @@ export class D3graphComponent {
   newArray: any;
   states: any[]
   seriesData: any;
+  matchId: number;
   initiativeID: string;
   initative: any[];
 
@@ -45,73 +46,81 @@ export class D3graphComponent {
 constructor(private router: Router, route: ActivatedRoute){
     Object.assign(this, {single, multi})
     this.initiativeID = route.snapshot.params['id'];
-    this.initiativeID = (parseInt(this.initiativeID)-1).toString();
+    this.matchId = parseInt(route.snapshot.params['id']);
+    this.initiativeID = (parseInt(this.initiativeID)).toString();
     // console.log("myID", this.initiativeID)
+    console.log("THIS IS MY ID: ", this.initiativeID)
 
 
     let projects = require('../data/projects.json');
     this.states = projects;
 
+    this.initative = this.states.filter(
+         state => state.ID === this.matchId);
+
+
+         console.log("THIS INITATIVVE: ", this.initative)
+
     this.seriesData = [
         {
           "name": "2003",
-          "value": this.states[this.initiativeID].ACFY2003 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2003.replace(/,/g, ''))
+          "value": this.initative[0].ACFY2003 == 0 ? 0 : parseFloat(this.initative[0].ACFY2003.replace(/,/g, ''))
         },
         {
           "name": "2004",
-          "value": this.states[this.initiativeID].ACFY2004 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2004.replace(/,/g, ''))
+          "value": this.initative[0].ACFY2004 == 0 ? 0 : parseFloat(this.initative[0].ACFY2004.replace(/,/g, ''))
         },
         {
           "name": "2005",
-          "value": this.states[this.initiativeID].ACFY2005 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2005.replace(/,/g, ''))
+          "value": this.initative[0].ACFY2005 == 0 ? 0 : parseFloat(this.initative[0].ACFY2005.replace(/,/g, ''))
         },
         {
           "name": "2006",
-          "value": this.states[this.initiativeID].ACFY2006 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2006.replace(/,/g, ''))
+          "value": this.initative[0].ACFY2006 == 0 ? 0 : parseFloat(this.initative[0].ACFY2006.replace(/,/g, ''))
         },
         {
           "name": "2007",
-          "value": this.states[this.initiativeID].ACFY2007 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2007.replace(/,/g, ''))
+          "value": this.initative[0].ACFY2007 == 0 ? 0 : parseFloat(this.initative[0].ACFY2007.replace(/,/g, ''))
         },
         {
           "name": "2008",
-          "value": this.states[this.initiativeID].ACFY2008 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2008.replace(/,/g, ''))
+          "value": this.initative[0].ACFY2008 == 0 ? 0 : parseFloat(this.initative[0].ACFY2008.replace(/,/g, ''))
         },
         {
           "name": "2009",
-          "value": this.states[this.initiativeID].ACFY2009 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2009.replace(/,/g, ''))
+          "value": this.initative[0].ACFY2009 == 0 ? 0 : parseFloat(this.initative[0].ACFY2009.replace(/,/g, ''))
         },
       {
         "name": "2010",
-        "value": this.states[this.initiativeID].ACFY2010 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2010.replace(/,/g, ''))
+        "value": this.initative[0].ACFY2010 == 0 ? 0 : parseFloat(this.initative[0].ACFY2010.replace(/,/g, ''))
       },
       {
         "name": "2011",
-        "value": this.states[this.initiativeID].ACFY2011 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2011.replace(/,/g, ''))
+        "value": this.initative[0].ACFY2011 == 0 ? 0 : parseFloat(this.initative[0].ACFY2011.replace(/,/g, ''))
       },
       {
         "name": "2012",
-        "value": this.states[this.initiativeID].ACFY2012 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2012.replace(/,/g, ''))
+        "value": this.initative[0].ACFY2012 == 0 ? 0 : parseFloat(this.initative[0].ACFY2012.replace(/,/g, ''))
       },
       {
         "name": "2013",
-        "value": this.states[this.initiativeID].ACFY2013 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2013.replace(/,/g, ''))
+        "value": this.initative[0].ACFY2013 == 0 ? 0 : parseFloat(this.initative[0].ACFY2013.replace(/,/g, ''))
       },
       {
         "name": "2014",
-        "value": this.states[this.initiativeID].ACFY2014 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2014.replace(/,/g, ''))
+        "value": this.initative[0].ACFY2014 == 0 ? 0 : parseFloat(this.initative[0].ACFY2014.replace(/,/g, ''))
       },
       {
         "name": "2015",
-        "value": this.states[this.initiativeID].ACFY2015 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2015.replace(/,/g, ''))
+        "value": this.initative[0].ACFY2015 == 0 ? 0 : parseFloat(this.initative[0].ACFY2015.replace(/,/g, ''))
       },
       {
         "name": "2016",
-        "value": this.states[this.initiativeID].ACFY2016 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2016.replace(/,/g, ''))
+        "value": this.initative[0].ACFY2016 == 0 ? 0 : parseFloat(this.initative[0].ACFY2016.replace(/,/g, ''))
       },
       {
         "name": "2017",
-        "value": this.states[this.initiativeID].ACFY2017 == 0 ? 0 : parseFloat(this.states[this.initiativeID].ACFY2017.replace(/,/g, ''))
+        "value": this.initative[0].ACFY2017 == 0 ? 0 : parseFloat(this.initative[0].ACFY2017.replace(/,/g, ''))
       },
     ]
 
@@ -131,12 +140,13 @@ constructor(private router: Router, route: ActivatedRoute){
 
 
 ngOnInit(){
-    console.log(this.states[this.initiativeID])
-    this.initative = this.states[this.initiativeID]
-    console.log(this.initative)
+    // this.initative = this.states.filter(
+    //      state => state.ID === this.matchId);
+    //      console.log("TESTING", this.initative[0])
+
     this.data = [
       {
-        "name": this.states[this.initiativeID].Initiative,
+        "name": this.initative[0].Initiative,
         "series": this.seriesData
       }
     ]
