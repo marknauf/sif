@@ -137,7 +137,7 @@ ngOnInit(){
     this.data = [
       {
         "name": this.states[this.initiativeID].Initiative,
-        "series": this.newArray
+        "series": this.seriesData
       }
     ]
 console.log(this.data);

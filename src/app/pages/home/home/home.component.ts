@@ -56,7 +56,17 @@ export class HomeComponent implements OnInit {
       ['Human Welfare & Care', 'SIF Fund', 0, 0],
       ['Earth and Space Discovery & Exploration', 'SIF Fund', 0, 0],
     ],
-    options: {generateTooltip: this.showFullTooltip},
+    options: {generateTooltip: this.showFullTooltip,
+        highlightOnMouseOver: true,
+           maxDepth: 1,
+           maxPostDepth: 1,
+           fontColor: '#ffffff',
+           minHighlightColor: '#ffffff',
+           midHighlightColor: '#5C6670',
+           maxHighlightColor: '#4d545b',
+           minColor: '#ffffff',
+           midColor: '#8C1D40',
+           maxColor: '#7c1a39'},
   };
 
   showFullTooltip(row, size, value) {
@@ -119,11 +129,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
      for (var i = 0; i < this.states.length; i++) {
-          const addition = [this.states[i].Initiative, this.states[i].StratArea, this.states[i].ACFY2017 == 0 ? 0 : parseFloat(this.states[i].ACFY2017.replace(/,/g, '')), 0]
+          const addition = [this.states[i].Initiative, this.states[i].StratArea, this.states[i].ACFY2017 == 0 ? 0 : parseFloat(this.states[i].ACFY2017.replace(/,/g, '')), this.states[i].ACFY2017 == 0 ? 0 : parseFloat(this.states[i].ACFY2017.replace(/,/g, ''))]
 
           this.treeChartData.dataTable.push(addition)
           this.treeData = this.treeChartData.dataTable
       }
+      this.states = this.states.filter(
+           state => state.PI !== "Legacy");
       console.log(this.treeData[0])
   }
 

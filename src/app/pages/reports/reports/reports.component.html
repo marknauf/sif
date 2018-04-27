@@ -15,9 +15,11 @@
 <mat-list>
   <h3 mat-subheader>Reports</h3>
   <mat-list-item *ngFor="let note of notes">
-    <mat-icon mat-list-icon>note</mat-icon>
-    <h4 mat-line>{{note.name}}</h4>
-    <p mat-line> {{note.updated | date}} </p>
+
+       <mat-icon mat-list-icon><a style="color:grey; text-decoration: none;" href={{note.link}}>note</a></mat-icon>
+    <h4 mat-line><a style="color:grey; text-decoration: none;" href={{note.link}}>{{note.name}}</a></h4>
+    <p mat-line><a style="color:grey;text-decoration: none;" href={{note.link}}>{{note.updated | date}}</a></p>
+
   </mat-list-item>
 </mat-list>
 </div>
