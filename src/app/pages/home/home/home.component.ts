@@ -5,8 +5,11 @@ import {FormControl} from '@angular/forms';
 import { FilterPipe }from '../../../filter.pipe';
 import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';
-import {map} from 'rxjs/operators/map';
+// import {map} from 'rxjs/operators/map';
+
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {Http, Response} from '@angular/http';
+import 'rxjs/add/operator/map';
 
 
 export class State {
@@ -19,20 +22,64 @@ export class State {
   styleUrls: ['./home.component.css']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
+  private apiUrl = "https://spreadsheets.google.com/feeds/list/1ejWQIpPrgNpnIFQ5PoaKrvVLgcb6jua1GZbAWHWXFow/od6/public/values?alt=json";
+  sifProjects: any = {};
   title: String;
   names: any;
   states: any;
   dataTable: any;
   searchableList: any;
-  treeData: any;
-  constructor(private router: Router) {
-    this.title = "SIF Search";
-    let projects = require('../../data/projects.json');
-    this.states = projects;
+  allDataFetched: boolean = false;
 
-        this.searchableList = ['Initiative', 'PI', 'Type']
+  treeData: any;
+
+  constructor(private router: Router, private http: Http) {
+      // this.getProjects();
+    this.title = "SIF Search";
+    // let projects = require('../../data/projects.json');
+    // this.states = this.sifProjects;
+
+
+  }
+
+  getData(){
+      return this.http.get(this.apiUrl)
+        .map((res: Response) => res.json())
+  }
+
+  runMap(){
+      console.log("Maps is getting called")
+      for (var i = 0; i < this.states.length; i++) {
+           const addition = [this.states[i].gsx$initiative.$t,
+            this.states[i].gsx$stratarea.$t,
+             this.states[i].gsx$acfy2017.$t == 0 ? 0 : parseFloat(this.states[i].gsx$acfy2017.$t.replace(/,/g, '')),
+              this.states[i].gsx$acfy2017.$t == 0 ? 0 : parseFloat(this.states[i].gsx$acfy2017.$t.replace(/,/g, ''))]
+
+           this.treeChartData.dataTable.push(addition)
+           this.treeData = this.treeChartData.dataTable
+           console.log(this.treeData)
+       }
+       this.states = this.states.filter(
+            state => state.gsx$pi.$t !== "Legacy");
+       console.log(this.treeData[0])
+  }
+
+  getProjects(){
+      return this.getData().subscribe(
+          data => {
+          console.log("JSON DATA", data)
+          this.sifProjects = data.feed.entry;
+           console.log("JSON NEW", this.sifProjects);
+          this.states = this.sifProjects;
+          this.runMap();
+          this.allDataFetched = true;
+          console.log("JSON States", this.states);
+          this.searchableList = ['Initiative', 'PI', 'Type']
+
+      }
+  );
   }
 
   treeChartData = {
@@ -128,15 +175,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-     for (var i = 0; i < this.states.length; i++) {
-          const addition = [this.states[i].Initiative, this.states[i].StratArea, this.states[i].ACFY2017 == 0 ? 0 : parseFloat(this.states[i].ACFY2017.replace(/,/g, '')), this.states[i].ACFY2017 == 0 ? 0 : parseFloat(this.states[i].ACFY2017.replace(/,/g, ''))]
-
-          this.treeChartData.dataTable.push(addition)
-          this.treeData = this.treeChartData.dataTable
-      }
-      this.states = this.states.filter(
-           state => state.PI !== "Legacy");
-      console.log(this.treeData[0])
+      this.getProjects()
   }
 
 }

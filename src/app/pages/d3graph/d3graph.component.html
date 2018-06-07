@@ -1,36 +1,38 @@
 <div align="center">
 
-<div style="margin-bottom:30px; margin-top:15px">
+<div  *ngIf="allDataFetched" style="margin-bottom:30px; margin-top:15px">
   <h1 >
-      {{this.initative[0].Initiative}}
+      {{this.initative[0].gsx$initiative.$t}}
     </h1>
 </div>
 
   <div>
-    <button mat-raised-button style="margin-bottom: 30px;" (click)="onBack()"> Go Back </button>
+    <button mat-raised-button style="margin-bottom: 30px;" (click)="onBack()"> Go Home </button>
+    <button mat-raised-button style="margin-bottom: 20px;" (click)="documents(this.initative[0].gsx$id.$t)"> Documents </button>
+
   </div>
 
   <div class="row" style="margin-top: 15px; margin-bottom:50px">
 
-<div class="col-md-4" style="padding: 0">
+<div *ngIf="allDataFetched" class="col-md-4" style="padding: 0">
 Year First Funded:
 <br>
-{{this.initative[0].FirstYearFunded}}
+{{this.initative[0].gsx$firstyearfunded.$t}}
 </div>
-<div class="col-md-4" style="padding: 0">
+<div *ngIf="allDataFetched" class="col-md-4" style="padding: 0">
 Funding Since Inception:
 <br>
-{{initative[0].FundingSinceInception}}
+{{initative[0].gsx$fundingsinceinception.$t}}
 </div>
-<div class="col-md-4" style="padding: 0">
+<div *ngIf="allDataFetched" class="col-md-4" style="padding: 0">
 Year Funding Expires:
 <br>
-{{this.initative[0].YearFundingExpires}}
+{{this.initative[0].gsx$yearfundingexpires.$t}}
 </div>
 
   </div>
 
-  <ngx-charts-line-chart
+  <ngx-charts-line-chart *ngIf="allDataFetched"
     [view]="view"
     [scheme]="colorScheme"
     [results]="data"
