@@ -29,17 +29,10 @@ export class DocumentsComponent implements OnInit {
 
   constructor(private http: Http, private router: Router, route: ActivatedRoute, public sanitizer: DomSanitizer) {
     this.docID = route.snapshot.params['id'];
-    console.log(this.docID);
     this.initiativeID = route.snapshot.params['id'];
     this.initiativeID = (parseInt(this.initiativeID)-1).toString();
     this.matchId = route.snapshot.params['id'];
     this.sanitizer = sanitizer
-
-
-
-    // let projects = require('../../data/projects.json');
-    // this.states = projects;
-
 
 
   }
@@ -51,16 +44,15 @@ export class DocumentsComponent implements OnInit {
 
   getProjects(){
       this.getData().subscribe(data => {
-          console.log("JSON DATA", data)
-          this.sifProjects = data.feed.entry;
-           console.log("JSON NEW", this.sifProjects)
-          this.states = this.sifProjects;
-          console.log("JSON States", this.states)
 
-          // console.log("THIS IS MY ID", this.states.gsx$id.$t)
+          this.sifProjects = data.feed.entry;
+
+          this.states = this.sifProjects;
+
+
           this.initative = this.states.filter(
                state => state.gsx$id.$t === this.matchId);
-               console.log(this.initative);
+    
                this.allDataFetched = true;
       })
   }

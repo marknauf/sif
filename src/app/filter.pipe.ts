@@ -4,21 +4,15 @@ import { Pipe, PipeTransform } from '@angular/core';
     name: 'FilterPipe',
 })
 export class FilterPipe implements PipeTransform {
- transform(value: any, input: string,searchableList : any) {
-  if (input) {
-   input = input.toLowerCase();
-   return value.filter(function (el: any) {
-   var isTrue = false;
-   for(var k in searchableList ){
-     if(el[searchableList[k]].toLowerCase().indexOf(input) > -1){
-      isTrue = true;
-     }
-     if(isTrue){
-      return el
-     }
+    transform(value: any, args?: any): any {
+
+        if (!value) return null;
+        if (!args) return value;
+
+        args = args.toLowerCase();
+
+        return value.filter(function (item: any) {
+            return JSON.stringify(item).toLowerCase().includes(args);
+        });
     }
-  })
- }
- return value;
- }
 }

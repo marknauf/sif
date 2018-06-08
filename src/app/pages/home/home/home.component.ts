@@ -30,7 +30,7 @@ export class HomeComponent {
   names: any;
   states: any;
   dataTable: any;
-  searchableList: any;
+  searchableList: any = ['gsx$pi'];
   allDataFetched: boolean = false;
 
   treeData: any;
@@ -40,7 +40,8 @@ export class HomeComponent {
     this.title = "SIF Search";
     // let projects = require('../../data/projects.json');
     // this.states = this.sifProjects;
-
+    // this.searchableList = ['initiative', 'pi', 'type']
+// this.searchableList = ['pi']
 
   }
 
@@ -50,7 +51,7 @@ export class HomeComponent {
   }
 
   runMap(){
-      console.log("Maps is getting called")
+
       for (var i = 0; i < this.states.length; i++) {
            const addition = [this.states[i].gsx$initiative.$t,
             this.states[i].gsx$stratarea.$t,
@@ -59,24 +60,23 @@ export class HomeComponent {
 
            this.treeChartData.dataTable.push(addition)
            this.treeData = this.treeChartData.dataTable
-           console.log(this.treeData)
+
        }
        this.states = this.states.filter(
             state => state.gsx$pi.$t !== "Legacy");
-       console.log(this.treeData[0])
+
   }
 
   getProjects(){
       return this.getData().subscribe(
           data => {
-          console.log("JSON DATA", data)
           this.sifProjects = data.feed.entry;
-           console.log("JSON NEW", this.sifProjects);
           this.states = this.sifProjects;
+          // this.searchableList = ['pi'];
+          // this.searchableList = ['gsx$initiative.$t']
           this.runMap();
           this.allDataFetched = true;
-          console.log("JSON States", this.states);
-          this.searchableList = ['Initiative', 'PI', 'Type']
+
 
       }
   );

@@ -55,15 +55,6 @@ constructor(private http: Http, route: ActivatedRoute, private router: Router){
     this.initiativeID = route.snapshot.params['id'];
     this.matchId = route.snapshot.params['id'];
     this.initiativeID = (parseInt(this.initiativeID)).toString();
-    // console.log("myID", this.initiativeID)
-    console.log("THIS IS MY ID: ", this.initiativeID)
-
-
-
-
-// let projects = require('../../data/projects.json');
-// this.states = projects;
-
 
 }
 
@@ -80,10 +71,8 @@ constructor(private http: Http, route: ActivatedRoute, private router: Router){
          this.sifProjects = data.feed.entry;
          this.states = this.sifProjects;
 
-         // console.log("THIS IS MY ID", this.states.gsx$id.$t)
          this.initative = this.states.filter(
               state => state.gsx$id.$t === this.matchId);
-              console.log("This initative:", this.initative);
               this.createChart();
               this.allDataFetched = true;
 
@@ -93,7 +82,7 @@ constructor(private http: Http, route: ActivatedRoute, private router: Router){
     }
 
   onSelect(event) {
-    console.log(event);
+
   }
 
 createChart(){
@@ -166,7 +155,7 @@ createChart(){
                     return el.value > 0
                   });
 
-                  console.log(this.newArray);
+        
 
 
                   this.data = [
@@ -175,7 +164,7 @@ createChart(){
                       "series": this.seriesData
                     }
                   ]
-              console.log(this.data);
+
 }
 
 documents(event) {
