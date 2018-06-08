@@ -111,7 +111,7 @@ export class DemoMaterialModule { }
 
   declarations: [AnnualComponent, AppComponent, ReportsComponent, DocPageComponent, D3graphComponent, ProjectsComponent, HomeComponent, DocumentsComponent, FilterPipe],
   bootstrap: [AppComponent],
-  providers: [D3Service]
+  providers: [D3Service, HomeComponent]
 })
 export class AppModule { }
 

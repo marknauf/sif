@@ -15,7 +15,7 @@
     <!-- <button (click)="docpage()" mat-raised-button color="primary">Documents</button> -->
   </div>
 
-  <div style="margin: 25px;">
+  <div *ngIf="allDataFetched" style="margin: 25px;">
     <google-chart [data]="treeChartData"></google-chart>
   </div>
 
@@ -29,15 +29,15 @@
     <mat-card *ngFor="let state of states | FilterPipe: queryString : searchableList | slice:pageStart:pageEnd" class="example-card" fxFlex="34%">
       <mat-card-header>
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
-        <mat-card-title><b>{{state.Initiative}}</b></mat-card-title>
-        <mat-card-subtitle>{{state.PI}}</mat-card-subtitle>
+        <mat-card-title><b>{{state.gsx$initiative.$t}}</b></mat-card-title>
+        <mat-card-subtitle>{{state.gsx$pi.$t}}</mat-card-subtitle>
         <div align="end" class="dot"></div>
 
       </mat-card-header>
       <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
       <mat-card-content>
         <p>
-          {{state.ProjectDescription}}
+          {{state.gsx$projectdescription.$t}}
         </p>
       </mat-card-content>
 
@@ -46,10 +46,10 @@
 
         <div align="end">
             <span style='position: absolute; left: 20px; bottom: 16px;'>
-             {{state.Type}}
+             {{state.gsx$type.$t}}
                 </span>
-        <button *ngIf="state.DropboxLink" mat-button (click)="documents(state.ID)">DOCUMENTS</button>
-        <button mat-button (click)="data(state.ID)">DATA</button>
+        <button *ngIf="state.gsx$dropboxlink.$t" mat-button (click)="documents(state.gsx$id.$t)">DOCUMENTS</button>
+        <button mat-button (click)="data(state.gsx$id.$t)">DATA</button>
     </div>
       </mat-card-actions>
 

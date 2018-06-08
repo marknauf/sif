@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import {ActivatedRoute} from '@angular/router';
 
+import {Http, Response} from '@angular/http';
+import 'rxjs/add/operator/map';
+
+
 @Component({
   selector: 'app-documents',
   templateUrl: './documents.component.html',
@@ -10,6 +14,8 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class DocumentsComponent implements OnInit {
 
+  private apiUrl = "https://spreadsheets.google.com/feeds/list/1ejWQIpPrgNpnIFQ5PoaKrvVLgcb6jua1GZbAWHWXFow/od6/public/values?alt=json";
+  sifProjects: any = {};
   initative: any[];
   initiativeID: string;
   docID: any;
@@ -18,34 +24,57 @@ export class DocumentsComponent implements OnInit {
   matchId: number;
   documents: any [];
   projects: any;
-  constructor(private router: Router, route: ActivatedRoute, public sanitizer: DomSanitizer) {
+  allDataFetched: boolean = false;
+
+
+  constructor(private http: Http, private router: Router, route: ActivatedRoute, public sanitizer: DomSanitizer) {
     this.docID = route.snapshot.params['id'];
-    console.log(this.docID);
     this.initiativeID = route.snapshot.params['id'];
     this.initiativeID = (parseInt(this.initiativeID)-1).toString();
-    this.matchId = parseInt(route.snapshot.params['id']);
+    this.matchId = route.snapshot.params['id'];
     this.sanitizer = sanitizer
 
-    let projects = require('../../data/projects.json');
-    this.states = projects;
 
-    this.initative = this.states.filter(
-         state => state.ID === this.matchId);
+  }
 
+  getData(){
+      return this.http.get(this.apiUrl)
+        .map((res: Response) => res.json())
+  }
+
+  getProjects(){
+      this.getData().subscribe(data => {
+
+          this.sifProjects = data.feed.entry;
+
+          this.states = this.sifProjects;
+
+
+          this.initative = this.states.filter(
+               state => state.gsx$id.$t === this.matchId);
+    
+               this.allDataFetched = true;
+      })
   }
 
   onBack() {
     this.router.navigate(['/', 'home']);
   }
-  ngOnInit() {
 
-      // this.initative = this.states[this.initiativeID]
+  data(event) {
 
+    this.router.navigate(['/', 'data', event]);
 
   }
 
+
+  ngOnInit() {
+
+         this.getProjects();
+  }
+
   cleanURL() {
-     return this.sanitizer.bypassSecurityTrustResourceUrl(this.initative[0].DropboxLink);
+     return this.sanitizer.bypassSecurityTrustResourceUrl(this.initative[0].gsx$dropboxlink.$t);
    }
 
 }

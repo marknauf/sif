@@ -5,10 +5,11 @@
     </h1>
 
   <div>
-    <button mat-raised-button style="margin-bottom: 20px;" (click)="onBack()"> Go Back </button>
+    <button mat-raised-button style="margin-bottom: 20px;" (click)="onBack()"> Go Home </button>
+    <button mat-raised-button style="margin-bottom: 20px;" (click)="data(this.initative[0].gsx$id.$t)"> Data </button>
   </div>
 
-  <div>
+  <div *ngIf="allDataFetched">
     <iframe width=475 height=600 id="db" [src]='cleanURL()'></iframe>
   </div>
 

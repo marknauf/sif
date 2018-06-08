@@ -19,7 +19,6 @@ export class ProjectsComponent implements OnInit {
 
     this.title = "SIF Search";
     this.docID = route.snapshot.params['id'];
-    console.log(this.docID);
     let projects = require('../../data/projects.json');
     this.states = projects;
     this.searchableList = ['name', 'pi']
