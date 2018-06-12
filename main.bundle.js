@@ -263,14 +263,14 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_12_ng2_google_charts__["a" /* Ng2GoogleChartsModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_forms__["c" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts__["NgxChartsModule"],
-                __WEBPACK_IMPORTED_MODULE_20__angular_http__["a" /* HttpModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_http__["b" /* HttpModule */],
                 DemoMaterialModule,
                 __WEBPACK_IMPORTED_MODULE_17__angular_material__["o" /* MatNativeDateModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_forms__["h" /* ReactiveFormsModule */],
             ],
             declarations: [__WEBPACK_IMPORTED_MODULE_10__pages_annual_annual_annual_component__["a" /* AnnualComponent */], __WEBPACK_IMPORTED_MODULE_18__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_8__pages_reports_reports_reports_component__["a" /* ReportsComponent */], __WEBPACK_IMPORTED_MODULE_13__pages_docpage_docpage_docpage_component__["a" /* DocPageComponent */], __WEBPACK_IMPORTED_MODULE_22__pages_d3graph_d3graph_component__["a" /* D3graphComponent */], __WEBPACK_IMPORTED_MODULE_11__pages_projects_projects_projects_component__["a" /* ProjectsComponent */], __WEBPACK_IMPORTED_MODULE_9__pages_home_home_home_component__["a" /* HomeComponent */], __WEBPACK_IMPORTED_MODULE_19__pages_documents_documents_documents_component__["a" /* DocumentsComponent */], __WEBPACK_IMPORTED_MODULE_1__filter_pipe__["a" /* FilterPipe */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_18__app_component__["a" /* AppComponent */]],
-            providers: [__WEBPACK_IMPORTED_MODULE_15_d3_ng2_service__["a" /* D3Service */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_15_d3_ng2_service__["a" /* D3Service */], __WEBPACK_IMPORTED_MODULE_9__pages_home_home_home_component__["a" /* HomeComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -297,22 +297,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var FilterPipe = (function () {
     function FilterPipe() {
     }
-    FilterPipe.prototype.transform = function (value, input, searchableList) {
-        if (input) {
-            input = input.toLowerCase();
-            return value.filter(function (el) {
-                var isTrue = false;
-                for (var k in searchableList) {
-                    if (el[searchableList[k]].toLowerCase().indexOf(input) > -1) {
-                        isTrue = true;
-                    }
-                    if (isTrue) {
-                        return el;
-                    }
-                }
-            });
-        }
-        return value;
+    FilterPipe.prototype.transform = function (value, args) {
+        if (!value)
+            return null;
+        if (!args)
+            return value;
+        args = args.toLowerCase();
+        return value.filter(function (item) {
+            return JSON.stringify(item).toLowerCase().includes(args);
+        });
     };
     FilterPipe = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
@@ -393,7 +386,7 @@ module.exports = "/*!\n * Bootstrap v4.1.0 (https://getbootstrap.com/)\n * Copyr
 /***/ "./src/app/pages/d3graph/d3graph.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div align=\"center\">\n\n<div style=\"margin-bottom:30px; margin-top:15px\">\n  <h1 >\n      {{this.initative[0].Initiative}}\n    </h1>\n</div>\n\n  <div>\n    <button mat-raised-button style=\"margin-bottom: 30px;\" (click)=\"onBack()\"> Go Back </button>\n  </div>\n\n  <div class=\"row\" style=\"margin-top: 15px; margin-bottom:50px\">\n\n<div class=\"col-md-4\" style=\"padding: 0\">\nYear First Funded:\n<br>\n{{this.initative[0].FirstYearFunded}}\n</div>\n<div class=\"col-md-4\" style=\"padding: 0\">\nFunding Since Inception:\n<br>\n{{initative[0].FundingSinceInception}}\n</div>\n<div class=\"col-md-4\" style=\"padding: 0\">\nYear Funding Expires:\n<br>\n{{this.initative[0].YearFundingExpires}}\n</div>\n\n  </div>\n\n  <ngx-charts-line-chart\n    [view]=\"view\"\n    [scheme]=\"colorScheme\"\n    [results]=\"data\"\n    [gradient]=\"gradient\"\n    [xAxis]=\"showXAxis\"\n    [yAxis]=\"showYAxis\"\n    [legend]=\"showLegend\"\n    [showXAxisLabel]=\"showXAxisLabel\"\n    [showYAxisLabel]=\"showYAxisLabel\"\n    [xAxisLabel]=\"xAxisLabel\"\n    [yAxisLabel]=\"yAxisLabel\"\n    [autoScale]=\"autoScale\"\n    (select)=\"onSelect($event)\">\n  </ngx-charts-line-chart>\n\n\n</div>\n"
+module.exports = "<div align=\"center\">\n\n<div  *ngIf=\"allDataFetched\" style=\"margin-bottom:30px; margin-top:15px\">\n  <h1 >\n      {{this.initative[0].gsx$initiative.$t}}\n    </h1>\n</div>\n\n  <div>\n    <button mat-raised-button style=\"margin-bottom: 30px;\" (click)=\"onBack()\"> Go Home </button>\n    <button mat-raised-button style=\"margin-bottom: 20px;\" (click)=\"documents(this.initative[0].gsx$id.$t)\"> Documents </button>\n\n  </div>\n\n  <div class=\"row\" style=\"margin-top: 15px; margin-bottom:50px\">\n\n<div *ngIf=\"allDataFetched\" class=\"col-md-4\" style=\"padding: 0\">\nYear First Funded:\n<br>\n{{this.initative[0].gsx$firstyearfunded.$t}}\n</div>\n<div *ngIf=\"allDataFetched\" class=\"col-md-4\" style=\"padding: 0\">\nFunding Since Inception:\n<br>\n{{initative[0].gsx$fundingsinceinception.$t}}\n</div>\n<div *ngIf=\"allDataFetched\" class=\"col-md-4\" style=\"padding: 0\">\nYear Funding Expires:\n<br>\n{{this.initative[0].gsx$yearfundingexpires.$t}}\n</div>\n\n  </div>\n\n  <ngx-charts-line-chart *ngIf=\"allDataFetched\"\n    [view]=\"view\"\n    [scheme]=\"colorScheme\"\n    [results]=\"data\"\n    [gradient]=\"gradient\"\n    [xAxis]=\"showXAxis\"\n    [yAxis]=\"showYAxis\"\n    [legend]=\"showLegend\"\n    [showXAxisLabel]=\"showXAxisLabel\"\n    [showYAxisLabel]=\"showYAxisLabel\"\n    [xAxisLabel]=\"xAxisLabel\"\n    [yAxisLabel]=\"yAxisLabel\"\n    [autoScale]=\"autoScale\"\n    (select)=\"onSelect($event)\">\n  </ngx-charts-line-chart>\n\n\n</div>\n"
 
 /***/ }),
 
@@ -405,6 +398,7 @@ module.exports = "<div align=\"center\">\n\n<div style=\"margin-bottom:30px; mar
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__data__ = __webpack_require__("./src/app/pages/d3graph/data.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -419,10 +413,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var D3graphComponent = (function () {
-    function D3graphComponent(router, route) {
-        var _this = this;
+    function D3graphComponent(http, route, router) {
+        this.http = http;
         this.router = router;
+        this.apiUrl = "https://spreadsheets.google.com/feeds/list/1ejWQIpPrgNpnIFQ5PoaKrvVLgcb6jua1GZbAWHWXFow/od6/public/values?alt=json";
+        this.sifProjects = {};
+        this.allDataFetched = false;
         this.view = [700, 400];
         // options
         this.showXAxis = true;
@@ -440,95 +438,108 @@ var D3graphComponent = (function () {
         this.autoScale = true;
         Object.assign(this, { single: __WEBPACK_IMPORTED_MODULE_0__data__["b" /* single */], multi: __WEBPACK_IMPORTED_MODULE_0__data__["a" /* multi */] });
         this.initiativeID = route.snapshot.params['id'];
-        this.matchId = parseInt(route.snapshot.params['id']);
+        this.matchId = route.snapshot.params['id'];
         this.initiativeID = (parseInt(this.initiativeID)).toString();
-        // console.log("myID", this.initiativeID)
-        console.log("THIS IS MY ID: ", this.initiativeID);
-        var projects = __webpack_require__("./src/app/pages/data/projects.json");
-        this.states = projects;
-        this.initative = this.states.filter(function (state) { return state.ID === _this.matchId; });
-        console.log("THIS INITATIVVE: ", this.initative);
+    }
+    D3graphComponent.prototype.getData = function () {
+        return this.http.get(this.apiUrl)
+            .map(function (res) { return res.json(); });
+    };
+    // this.initative = this.states.filter(
+    //     state => state.ID === this.matchId);
+    D3graphComponent.prototype.getProjects = function () {
+        var _this = this;
+        this.getData().subscribe(function (data) {
+            _this.sifProjects = data.feed.entry;
+            _this.states = _this.sifProjects;
+            _this.initative = _this.states.filter(function (state) { return state.gsx$id.$t === _this.matchId; });
+            _this.createChart();
+            _this.allDataFetched = true;
+        });
+    };
+    D3graphComponent.prototype.onSelect = function (event) {
+    };
+    D3graphComponent.prototype.createChart = function () {
         this.seriesData = [
             {
                 "name": "2003",
-                "value": this.initative[0].ACFY2003 == 0 ? 0 : parseFloat(this.initative[0].ACFY2003.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2003.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2003.$t.replace(/,/g, ''))
             },
             {
                 "name": "2004",
-                "value": this.initative[0].ACFY2004 == 0 ? 0 : parseFloat(this.initative[0].ACFY2004.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2004.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2004.$t.replace(/,/g, ''))
             },
             {
                 "name": "2005",
-                "value": this.initative[0].ACFY2005 == 0 ? 0 : parseFloat(this.initative[0].ACFY2005.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2005.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2005.$t.replace(/,/g, ''))
             },
             {
                 "name": "2006",
-                "value": this.initative[0].ACFY2006 == 0 ? 0 : parseFloat(this.initative[0].ACFY2006.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2006.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2006.$t.replace(/,/g, ''))
             },
             {
                 "name": "2007",
-                "value": this.initative[0].ACFY2007 == 0 ? 0 : parseFloat(this.initative[0].ACFY2007.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2007.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2007.$t.replace(/,/g, ''))
             },
             {
                 "name": "2008",
-                "value": this.initative[0].ACFY2008 == 0 ? 0 : parseFloat(this.initative[0].ACFY2008.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2008.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2008.$t.replace(/,/g, ''))
             },
             {
                 "name": "2009",
-                "value": this.initative[0].ACFY2009 == 0 ? 0 : parseFloat(this.initative[0].ACFY2009.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2009.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2009.$t.replace(/,/g, ''))
             },
             {
                 "name": "2010",
-                "value": this.initative[0].ACFY2010 == 0 ? 0 : parseFloat(this.initative[0].ACFY2010.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2010.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2010.$t.replace(/,/g, ''))
             },
             {
                 "name": "2011",
-                "value": this.initative[0].ACFY2011 == 0 ? 0 : parseFloat(this.initative[0].ACFY2011.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2011.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2011.$t.replace(/,/g, ''))
             },
             {
                 "name": "2012",
-                "value": this.initative[0].ACFY2012 == 0 ? 0 : parseFloat(this.initative[0].ACFY2012.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2012.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2012.$t.replace(/,/g, ''))
             },
             {
                 "name": "2013",
-                "value": this.initative[0].ACFY2013 == 0 ? 0 : parseFloat(this.initative[0].ACFY2013.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2013.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2013.$t.replace(/,/g, ''))
             },
             {
                 "name": "2014",
-                "value": this.initative[0].ACFY2014 == 0 ? 0 : parseFloat(this.initative[0].ACFY2014.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2014.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2014.$t.replace(/,/g, ''))
             },
             {
                 "name": "2015",
-                "value": this.initative[0].ACFY2015 == 0 ? 0 : parseFloat(this.initative[0].ACFY2015.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2015.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2015.$t.replace(/,/g, ''))
             },
             {
                 "name": "2016",
-                "value": this.initative[0].ACFY2016 == 0 ? 0 : parseFloat(this.initative[0].ACFY2016.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2016.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2016.$t.replace(/,/g, ''))
             },
             {
                 "name": "2017",
-                "value": this.initative[0].ACFY2017 == 0 ? 0 : parseFloat(this.initative[0].ACFY2017.replace(/,/g, ''))
+                "value": this.initative[0].gsx$acfy2017.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2017.$t.replace(/,/g, ''))
             },
         ];
         this.newArray = this.seriesData.filter(function (el) {
             return el.value > 0;
         });
-        console.log(this.newArray);
-    }
-    D3graphComponent.prototype.onSelect = function (event) {
-        console.log(event);
+        this.data = [
+            {
+                "name": this.initative[0].gsx$initiative.$t,
+                "series": this.seriesData
+            }
+        ];
+    };
+    D3graphComponent.prototype.documents = function (event) {
+        this.router.navigate(['/', 'docs', event]);
     };
     D3graphComponent.prototype.ngOnInit = function () {
         // this.initative = this.states.filter(
         //      state => state.ID === this.matchId);
         //      console.log("TESTING", this.initative[0])
-        this.data = [
-            {
-                "name": this.initative[0].Initiative,
-                "series": this.seriesData
-            }
-        ];
-        console.log(this.data);
+        this.getProjects();
         // this.newArray = this.seriesData.filter(function (el) {
         //   return el.value > 0
         // });
@@ -544,7 +555,7 @@ var D3graphComponent = (function () {
             template: __webpack_require__("./src/app/pages/d3graph/d3graph.component.html"),
             styles: [__webpack_require__("./src/app/pages/d3graph/d3graph.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]])
     ], D3graphComponent);
     return D3graphComponent;
 }());
@@ -722,7 +733,7 @@ module.exports = ""
 /***/ "./src/app/pages/documents/documents/documents.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div align=\"center\">\n\n  <h1>\n      Strategic Initatives Fund Dashboard\n    </h1>\n\n  <div>\n    <button mat-raised-button style=\"margin-bottom: 20px;\" (click)=\"onBack()\"> Go Back </button>\n  </div>\n\n  <div>\n    <iframe width=475 height=600 id=\"db\" [src]='cleanURL()'></iframe>\n  </div>\n\n</div>\n"
+module.exports = "<div align=\"center\">\n\n  <h1>\n      Strategic Initatives Fund Dashboard\n    </h1>\n\n  <div>\n    <button mat-raised-button style=\"margin-bottom: 20px;\" (click)=\"onBack()\"> Go Home </button>\n    <button mat-raised-button style=\"margin-bottom: 20px;\" (click)=\"data(this.initative[0].gsx$id.$t)\"> Data </button>\n  </div>\n\n  <div *ngIf=\"allDataFetched\">\n    <iframe width=475 height=600 id=\"db\" [src]='cleanURL()'></iframe>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -734,6 +745,8 @@ module.exports = "<div align=\"center\">\n\n  <h1>\n      Strategic Initatives F
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -747,29 +760,46 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var DocumentsComponent = (function () {
-    function DocumentsComponent(router, route, sanitizer) {
-        var _this = this;
+    function DocumentsComponent(http, router, route, sanitizer) {
+        this.http = http;
         this.router = router;
         this.sanitizer = sanitizer;
+        this.apiUrl = "https://spreadsheets.google.com/feeds/list/1ejWQIpPrgNpnIFQ5PoaKrvVLgcb6jua1GZbAWHWXFow/od6/public/values?alt=json";
+        this.sifProjects = {};
+        this.allDataFetched = false;
         this.docID = route.snapshot.params['id'];
-        console.log(this.docID);
         this.initiativeID = route.snapshot.params['id'];
         this.initiativeID = (parseInt(this.initiativeID) - 1).toString();
-        this.matchId = parseInt(route.snapshot.params['id']);
+        this.matchId = route.snapshot.params['id'];
         this.sanitizer = sanitizer;
-        var projects = __webpack_require__("./src/app/pages/data/projects.json");
-        this.states = projects;
-        this.initative = this.states.filter(function (state) { return state.ID === _this.matchId; });
     }
+    DocumentsComponent.prototype.getData = function () {
+        return this.http.get(this.apiUrl)
+            .map(function (res) { return res.json(); });
+    };
+    DocumentsComponent.prototype.getProjects = function () {
+        var _this = this;
+        this.getData().subscribe(function (data) {
+            _this.sifProjects = data.feed.entry;
+            _this.states = _this.sifProjects;
+            _this.initative = _this.states.filter(function (state) { return state.gsx$id.$t === _this.matchId; });
+            _this.allDataFetched = true;
+        });
+    };
     DocumentsComponent.prototype.onBack = function () {
         this.router.navigate(['/', 'home']);
     };
+    DocumentsComponent.prototype.data = function (event) {
+        this.router.navigate(['/', 'data', event]);
+    };
     DocumentsComponent.prototype.ngOnInit = function () {
-        // this.initative = this.states[this.initiativeID]
+        this.getProjects();
     };
     DocumentsComponent.prototype.cleanURL = function () {
-        return this.sanitizer.bypassSecurityTrustResourceUrl(this.initative[0].DropboxLink);
+        return this.sanitizer.bypassSecurityTrustResourceUrl(this.initative[0].gsx$dropboxlink.$t);
     };
     DocumentsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -777,7 +807,7 @@ var DocumentsComponent = (function () {
             template: __webpack_require__("./src/app/pages/documents/documents/documents.component.html"),
             styles: [__webpack_require__("./src/app/pages/documents/documents/documents.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["DomSanitizer"]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["DomSanitizer"]])
     ], DocumentsComponent);
     return DocumentsComponent;
 }());
@@ -796,7 +826,7 @@ module.exports = ".example-form {\n  min-width: 150px;\n  max-width: 500px;\n  w
 /***/ "./src/app/pages/home/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n\n<div style=\"height:2000px;overflow:scroll\" (scroll)=\"onScroll($event)\">\n  <div style=\"text-align:center\">\n    <h1 style=\"font-size: 40px;\">\n    Strategic Initatives Fund Dashboard\n  </h1>\n\n  </div>\n\n  <div style=\"text-align:center\">\n    <!-- <button (click)=\"projects()\" mat-raised-button color=\"primary\">Projects</button> -->\n    <button style=\"background-color: #8C1D40;\" (click)=\"reports()\" mat-raised-button color=\"primary\">Reports</button>\n    <button style=\"background-color: #8C1D40;\" (click)=\"annual()\" mat-raised-button color=\"primary\">Bi-Annual Reporting</button>\n    <!-- <button (click)=\"docpage()\" mat-raised-button color=\"primary\">Documents</button> -->\n  </div>\n\n  <div style=\"margin: 25px;\">\n    <google-chart [data]=\"treeChartData\"></google-chart>\n  </div>\n\n  <div align=\"center\" style=\"margin-bottom:20px\">\n    <mat-form-field class=\"example-full-width\">\n      <input matInput [(ngModel)]=\"queryString\" placeholder=\"Type to search...\" id=\"search\" type=\"text\">\n    </mat-form-field>\n    <!-- <input type=\"text\" [(ngModel)]=\"queryString\" id=\"search\" placeholder=\"Type to search...\"> -->\n  </div>\n  <div class=\"container\" fxLayout fxLayoutAlign=\"center\" fxLayoutWrap=\"wrap\" fxLayoutGap=\"0\" fxLayout.xs=\"column\" fxLayoutGap.xs=\"5px\" fxLayout.sm=\"column\" fxLayoutGap.sm=\"5px\">\n    <mat-card *ngFor=\"let state of states | FilterPipe: queryString : searchableList | slice:pageStart:pageEnd\" class=\"example-card\" fxFlex=\"34%\">\n      <mat-card-header>\n        <!-- <div mat-card-avatar class=\"example-header-image\"></div> -->\n        <mat-card-title><b>{{state.Initiative}}</b></mat-card-title>\n        <mat-card-subtitle>{{state.PI}}</mat-card-subtitle>\n        <div align=\"end\" class=\"dot\"></div>\n\n      </mat-card-header>\n      <!-- <img mat-card-image src=\"https://material.angular.io/assets/img/examples/shiba2.jpg\" alt=\"Photo of a Shiba Inu\"> -->\n      <mat-card-content>\n        <p>\n          {{state.ProjectDescription}}\n        </p>\n      </mat-card-content>\n\n\n      <mat-card-actions>\n\n        <div align=\"end\">\n            <span style='position: absolute; left: 20px; bottom: 16px;'>\n             {{state.Type}}\n                </span>\n        <button *ngIf=\"state.DropboxLink\" mat-button (click)=\"documents(state.ID)\">DOCUMENTS</button>\n        <button mat-button (click)=\"data(state.ID)\">DATA</button>\n    </div>\n      </mat-card-actions>\n\n    </mat-card>\n\n  </div>\n</div>\n\n<!-- <button (click)=\"test()\"> TEST </button> -->\n\n<!-- <div align=\"center\">\n  <iframe width=595 height=842 id=\"db\" src=\"https://www.dropbox.com/s/xp8549melc720ym/Get%20Started%20with%20Dropbox.pdf?raw=1\"></iframe>\n</div> -->\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n\n<div style=\"height:2000px;overflow:scroll\" (scroll)=\"onScroll($event)\">\n  <div style=\"text-align:center\">\n    <h1 style=\"font-size: 40px;\">\n    Strategic Initatives Fund Dashboard\n  </h1>\n\n  </div>\n\n  <div style=\"text-align:center\">\n    <!-- <button (click)=\"projects()\" mat-raised-button color=\"primary\">Projects</button> -->\n    <button style=\"background-color: #8C1D40;\" (click)=\"reports()\" mat-raised-button color=\"primary\">Reports</button>\n    <button style=\"background-color: #8C1D40;\" (click)=\"annual()\" mat-raised-button color=\"primary\">Bi-Annual Reporting</button>\n    <!-- <button (click)=\"docpage()\" mat-raised-button color=\"primary\">Documents</button> -->\n  </div>\n\n  <div *ngIf=\"allDataFetched\" style=\"margin: 25px;\">\n    <google-chart [data]=\"treeChartData\"></google-chart>\n  </div>\n\n  <div align=\"center\" style=\"margin-bottom:20px\">\n    <mat-form-field class=\"example-full-width\">\n      <input matInput [(ngModel)]=\"queryString\" placeholder=\"Type to search...\" id=\"search\" type=\"text\">\n    </mat-form-field>\n    <!-- <input type=\"text\" [(ngModel)]=\"queryString\" id=\"search\" placeholder=\"Type to search...\"> -->\n  </div>\n  <div class=\"container\" fxLayout fxLayoutAlign=\"center\" fxLayoutWrap=\"wrap\" fxLayoutGap=\"0\" fxLayout.xs=\"column\" fxLayoutGap.xs=\"5px\" fxLayout.sm=\"column\" fxLayoutGap.sm=\"5px\">\n    <mat-card *ngFor=\"let state of states | FilterPipe: queryString : searchableList | slice:pageStart:pageEnd\" class=\"example-card\" fxFlex=\"34%\">\n      <mat-card-header>\n        <!-- <div mat-card-avatar class=\"example-header-image\"></div> -->\n        <mat-card-title><b>{{state.gsx$initiative.$t}}</b></mat-card-title>\n        <mat-card-subtitle>{{state.gsx$pi.$t}}</mat-card-subtitle>\n        <div align=\"end\" class=\"dot\"></div>\n\n      </mat-card-header>\n      <!-- <img mat-card-image src=\"https://material.angular.io/assets/img/examples/shiba2.jpg\" alt=\"Photo of a Shiba Inu\"> -->\n      <mat-card-content>\n        <p>\n          {{state.gsx$projectdescription.$t}}\n        </p>\n      </mat-card-content>\n\n\n      <mat-card-actions>\n\n        <div align=\"end\">\n            <span style='position: absolute; left: 20px; bottom: 16px;'>\n             {{state.gsx$type.$t}}\n                </span>\n        <button *ngIf=\"state.gsx$dropboxlink.$t\" mat-button (click)=\"documents(state.gsx$id.$t)\">DOCUMENTS</button>\n        <button mat-button (click)=\"data(state.gsx$id.$t)\">DATA</button>\n    </div>\n      </mat-card-actions>\n\n    </mat-card>\n\n  </div>\n</div>\n\n<!-- <button (click)=\"test()\"> TEST </button> -->\n\n<!-- <div align=\"center\">\n  <iframe width=595 height=842 id=\"db\" src=\"https://www.dropbox.com/s/xp8549melc720ym/Get%20Started%20with%20Dropbox.pdf?raw=1\"></iframe>\n</div> -->\n"
 
 /***/ }),
 
@@ -808,6 +838,8 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -817,6 +849,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 var State = (function () {
@@ -830,8 +864,13 @@ var State = (function () {
 }());
 
 var HomeComponent = (function () {
-    function HomeComponent(router) {
+    function HomeComponent(router, http) {
         this.router = router;
+        this.http = http;
+        this.apiUrl = "https://spreadsheets.google.com/feeds/list/1ejWQIpPrgNpnIFQ5PoaKrvVLgcb6jua1GZbAWHWXFow/od6/public/values?alt=json";
+        this.sifProjects = {};
+        this.searchableList = ['gsx$pi'];
+        this.allDataFetched = false;
         this.treeChartData = {
             chartType: 'TreeMap',
             dataTable: [
@@ -868,11 +907,39 @@ var HomeComponent = (function () {
         this.pageEnd = 100;
         this.pageHeight = 30;
         this.pageBuffer = 100;
+        // this.getProjects();
         this.title = "SIF Search";
-        var projects = __webpack_require__("./src/app/pages/data/projects.json");
-        this.states = projects;
-        this.searchableList = ['Initiative', 'PI', 'Type'];
+        // let projects = require('../../data/projects.json');
+        // this.states = this.sifProjects;
+        // this.searchableList = ['initiative', 'pi', 'type']
+        // this.searchableList = ['pi']
     }
+    HomeComponent.prototype.getData = function () {
+        return this.http.get(this.apiUrl)
+            .map(function (res) { return res.json(); });
+    };
+    HomeComponent.prototype.runMap = function () {
+        for (var i = 0; i < this.states.length; i++) {
+            var addition = [this.states[i].gsx$initiative.$t,
+                this.states[i].gsx$stratarea.$t,
+                this.states[i].gsx$acfy2017.$t == 0 ? 0 : parseFloat(this.states[i].gsx$acfy2017.$t.replace(/,/g, '')),
+                this.states[i].gsx$acfy2017.$t == 0 ? 0 : parseFloat(this.states[i].gsx$acfy2017.$t.replace(/,/g, ''))];
+            this.treeChartData.dataTable.push(addition);
+            this.treeData = this.treeChartData.dataTable;
+        }
+        this.states = this.states.filter(function (state) { return state.gsx$pi.$t !== "Legacy"; });
+    };
+    HomeComponent.prototype.getProjects = function () {
+        var _this = this;
+        return this.getData().subscribe(function (data) {
+            _this.sifProjects = data.feed.entry;
+            _this.states = _this.sifProjects;
+            // this.searchableList = ['pi'];
+            // this.searchableList = ['gsx$initiative.$t']
+            _this.runMap();
+            _this.allDataFetched = true;
+        });
+    };
     HomeComponent.prototype.showFullTooltip = function (row, size, value) {
         return '<div style="background:#fd9; padding:10px; border-style:solid">' +
             '<span style="font-family:Courier"><b>' +
@@ -907,13 +974,7 @@ var HomeComponent = (function () {
         this.router.navigate(['/', 'data', event]);
     };
     HomeComponent.prototype.ngOnInit = function () {
-        for (var i = 0; i < this.states.length; i++) {
-            var addition = [this.states[i].Initiative, this.states[i].StratArea, this.states[i].ACFY2017 == 0 ? 0 : parseFloat(this.states[i].ACFY2017.replace(/,/g, '')), this.states[i].ACFY2017 == 0 ? 0 : parseFloat(this.states[i].ACFY2017.replace(/,/g, ''))];
-            this.treeChartData.dataTable.push(addition);
-            this.treeData = this.treeChartData.dataTable;
-        }
-        this.states = this.states.filter(function (state) { return state.PI !== "Legacy"; });
-        console.log(this.treeData[0]);
+        this.getProjects();
     };
     HomeComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -921,7 +982,7 @@ var HomeComponent = (function () {
             template: __webpack_require__("./src/app/pages/home/home/home.component.html"),
             styles: [__webpack_require__("./src/app/pages/home/home/home.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */]])
     ], HomeComponent);
     return HomeComponent;
 }());
@@ -968,7 +1029,6 @@ var ProjectsComponent = (function () {
         this.router = router;
         this.title = "SIF Search";
         this.docID = route.snapshot.params['id'];
-        console.log(this.docID);
         var projects = __webpack_require__("./src/app/pages/data/projects.json");
         this.states = projects;
         this.searchableList = ['name', 'pi'];
