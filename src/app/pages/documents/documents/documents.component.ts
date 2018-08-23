@@ -5,7 +5,7 @@ import {ActivatedRoute} from '@angular/router';
 
 import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
-
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   selector: 'app-documents',
@@ -27,13 +27,13 @@ export class DocumentsComponent implements OnInit {
   allDataFetched: boolean = false;
 
 
-  constructor(private http: Http, private router: Router, route: ActivatedRoute, public sanitizer: DomSanitizer) {
+  constructor(private spinnerService: Ng4LoadingSpinnerService, private http: Http, private router: Router, route: ActivatedRoute, public sanitizer: DomSanitizer) {
     this.docID = route.snapshot.params['id'];
     this.initiativeID = route.snapshot.params['id'];
     this.initiativeID = (parseInt(this.initiativeID)-1).toString();
     this.matchId = route.snapshot.params['id'];
     this.sanitizer = sanitizer
-
+        this.spinnerService.show();
 
   }
 
@@ -52,7 +52,7 @@ export class DocumentsComponent implements OnInit {
 
           this.initative = this.states.filter(
                state => state.gsx$id.$t === this.matchId);
-    
+
                this.allDataFetched = true;
       })
   }
@@ -75,6 +75,7 @@ export class DocumentsComponent implements OnInit {
 
   cleanURL() {
      return this.sanitizer.bypassSecurityTrustResourceUrl(this.initative[0].gsx$dropboxlink.$t);
+
    }
 
 }

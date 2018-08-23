@@ -15,6 +15,8 @@ import { DocPageComponent } from './pages/docpage/docpage/docpage.component'
 import { NbThemeModule } from '@nebular/theme';
 import { D3Service } from 'd3-ng2-service'; // <-- import statement
 import {NgxChartsModule} from '@swimlane/ngx-charts';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -98,6 +100,7 @@ export class DemoMaterialModule { }
   imports: [
     BrowserModule,
     NbThemeModule.forRoot({ name: 'default' }),
+    Ng4LoadingSpinnerModule.forRoot(),
     BrowserAnimationsModule,
     AppRoutingModule,
     Ng2GoogleChartsModule,
