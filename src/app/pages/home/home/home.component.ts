@@ -152,7 +152,7 @@ export class HomeComponent {
 
   reports() {
 
-    this.router.navigate(['/', 'reports']);
+    window.open("https://www.dropbox.com/home/Strategic%20Initiative%20Funds/SIF%20Reports",'_blank');
 
   }
 
