@@ -60,12 +60,12 @@ var routes = [
         component: __WEBPACK_IMPORTED_MODULE_2__pages_documents_documents_documents_component__["a" /* DocumentsComponent */]
     },
     {
-        path: 'projects',
-        component: __WEBPACK_IMPORTED_MODULE_3__pages_projects_projects_projects_component__["a" /* ProjectsComponent */]
+        path: 'reports/:id',
+        component: __WEBPACK_IMPORTED_MODULE_4__pages_reports_reports_reports_component__["a" /* ReportsComponent */]
     },
     {
-        path: 'reports',
-        component: __WEBPACK_IMPORTED_MODULE_4__pages_reports_reports_reports_component__["a" /* ReportsComponent */]
+        path: 'projects',
+        component: __WEBPACK_IMPORTED_MODULE_3__pages_projects_projects_projects_component__["a" /* ProjectsComponent */]
     },
     {
         path: 'annual',
@@ -111,7 +111,7 @@ module.exports = ".example-form {\n  min-width: 150px;\n  max-width: 500px;\n  w
 /***/ "./src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<router-outlet></router-outlet>\n"
+module.exports = "<router-outlet></router-outlet>\n\n<ng4-loading-spinner> </ng4-loading-spinner>\n"
 
 /***/ }),
 
@@ -169,12 +169,14 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_d3_ng2_service__ = __webpack_require__("./node_modules/d3-ng2-service/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts__ = __webpack_require__("./node_modules/@swimlane/ngx-charts/release/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_component__ = __webpack_require__("./src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_documents_documents_documents_component__ = __webpack_require__("./src/app/pages/documents/documents/documents.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_cdk_table__ = __webpack_require__("./node_modules/@angular/cdk/esm5/table.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_d3graph_d3graph_component__ = __webpack_require__("./src/app/pages/d3graph/d3graph.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_ng4_loading_spinner__ = __webpack_require__("./node_modules/ng4-loading-spinner/ng4-loading-spinner.umd.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_ng4_loading_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_ng4_loading_spinner__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_documents_documents_documents_component__ = __webpack_require__("./src/app/pages/documents/documents/documents.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_cdk_table__ = __webpack_require__("./node_modules/@angular/cdk/esm5/table.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_d3graph_d3graph_component__ = __webpack_require__("./src/app/pages/d3graph/d3graph.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -204,45 +206,46 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var DemoMaterialModule = (function () {
     function DemoMaterialModule() {
     }
     DemoMaterialModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["NgModule"])({
             exports: [
-                __WEBPACK_IMPORTED_MODULE_21__angular_cdk_table__["m" /* CdkTableModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["a" /* MatAutocompleteModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["b" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["c" /* MatButtonToggleModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["d" /* MatCardModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["e" /* MatCheckboxModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["f" /* MatChipsModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["A" /* MatStepperModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["g" /* MatDatepickerModule */],
+                __WEBPACK_IMPORTED_MODULE_22__angular_cdk_table__["m" /* CdkTableModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["a" /* MatAutocompleteModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["b" /* MatButtonModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["c" /* MatButtonToggleModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["d" /* MatCardModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["e" /* MatCheckboxModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["f" /* MatChipsModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["A" /* MatStepperModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["g" /* MatDatepickerModule */],
                 __WEBPACK_IMPORTED_MODULE_6__angular_flex_layout__["a" /* FlexLayoutModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["h" /* MatDialogModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["i" /* MatExpansionModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["j" /* MatGridListModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["k" /* MatIconModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["l" /* MatInputModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["m" /* MatListModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["n" /* MatMenuModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["o" /* MatNativeDateModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["p" /* MatPaginatorModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["q" /* MatProgressBarModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["r" /* MatProgressSpinnerModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["s" /* MatRadioModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["t" /* MatRippleModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["u" /* MatSelectModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["v" /* MatSidenavModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["x" /* MatSliderModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["w" /* MatSlideToggleModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["y" /* MatSnackBarModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["z" /* MatSortModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["B" /* MatTableModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["C" /* MatTabsModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["D" /* MatToolbarModule */],
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["E" /* MatTooltipModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["h" /* MatDialogModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["i" /* MatExpansionModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["j" /* MatGridListModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["k" /* MatIconModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["l" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["m" /* MatListModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["n" /* MatMenuModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["o" /* MatNativeDateModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["p" /* MatPaginatorModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["q" /* MatProgressBarModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["r" /* MatProgressSpinnerModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["s" /* MatRadioModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["t" /* MatRippleModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["u" /* MatSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["v" /* MatSidenavModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["x" /* MatSliderModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["w" /* MatSlideToggleModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["y" /* MatSnackBarModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["z" /* MatSortModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["B" /* MatTableModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["C" /* MatTabsModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["D" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["E" /* MatTooltipModule */],
             ],
             declarations: []
         })
@@ -258,18 +261,19 @@ var AppModule = (function () {
             imports: [
                 __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["BrowserModule"],
                 __WEBPACK_IMPORTED_MODULE_14__nebular_theme__["a" /* NbThemeModule */].forRoot({ name: 'default' }),
+                __WEBPACK_IMPORTED_MODULE_17_ng4_loading_spinner__["Ng4LoadingSpinnerModule"].forRoot(),
                 __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser_animations__["a" /* BrowserAnimationsModule */],
                 __WEBPACK_IMPORTED_MODULE_7__app_routing_module__["a" /* AppRoutingModule */],
                 __WEBPACK_IMPORTED_MODULE_12_ng2_google_charts__["a" /* Ng2GoogleChartsModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_forms__["c" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts__["NgxChartsModule"],
-                __WEBPACK_IMPORTED_MODULE_20__angular_http__["b" /* HttpModule */],
+                __WEBPACK_IMPORTED_MODULE_21__angular_http__["b" /* HttpModule */],
                 DemoMaterialModule,
-                __WEBPACK_IMPORTED_MODULE_17__angular_material__["o" /* MatNativeDateModule */],
+                __WEBPACK_IMPORTED_MODULE_18__angular_material__["o" /* MatNativeDateModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_forms__["h" /* ReactiveFormsModule */],
             ],
-            declarations: [__WEBPACK_IMPORTED_MODULE_10__pages_annual_annual_annual_component__["a" /* AnnualComponent */], __WEBPACK_IMPORTED_MODULE_18__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_8__pages_reports_reports_reports_component__["a" /* ReportsComponent */], __WEBPACK_IMPORTED_MODULE_13__pages_docpage_docpage_docpage_component__["a" /* DocPageComponent */], __WEBPACK_IMPORTED_MODULE_22__pages_d3graph_d3graph_component__["a" /* D3graphComponent */], __WEBPACK_IMPORTED_MODULE_11__pages_projects_projects_projects_component__["a" /* ProjectsComponent */], __WEBPACK_IMPORTED_MODULE_9__pages_home_home_home_component__["a" /* HomeComponent */], __WEBPACK_IMPORTED_MODULE_19__pages_documents_documents_documents_component__["a" /* DocumentsComponent */], __WEBPACK_IMPORTED_MODULE_1__filter_pipe__["a" /* FilterPipe */]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_18__app_component__["a" /* AppComponent */]],
+            declarations: [__WEBPACK_IMPORTED_MODULE_10__pages_annual_annual_annual_component__["a" /* AnnualComponent */], __WEBPACK_IMPORTED_MODULE_19__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_8__pages_reports_reports_reports_component__["a" /* ReportsComponent */], __WEBPACK_IMPORTED_MODULE_13__pages_docpage_docpage_docpage_component__["a" /* DocPageComponent */], __WEBPACK_IMPORTED_MODULE_23__pages_d3graph_d3graph_component__["a" /* D3graphComponent */], __WEBPACK_IMPORTED_MODULE_11__pages_projects_projects_projects_component__["a" /* ProjectsComponent */], __WEBPACK_IMPORTED_MODULE_9__pages_home_home_home_component__["a" /* HomeComponent */], __WEBPACK_IMPORTED_MODULE_20__pages_documents_documents_documents_component__["a" /* DocumentsComponent */], __WEBPACK_IMPORTED_MODULE_1__filter_pipe__["a" /* FilterPipe */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_19__app_component__["a" /* AppComponent */]],
             providers: [__WEBPACK_IMPORTED_MODULE_15_d3_ng2_service__["a" /* D3Service */], __WEBPACK_IMPORTED_MODULE_9__pages_home_home_home_component__["a" /* HomeComponent */]]
         })
     ], AppModule);
@@ -733,7 +737,7 @@ module.exports = ""
 /***/ "./src/app/pages/documents/documents/documents.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div align=\"center\">\n\n  <h1>\n      Strategic Initatives Fund Dashboard\n    </h1>\n\n  <div>\n    <button mat-raised-button style=\"margin-bottom: 20px;\" (click)=\"onBack()\"> Go Home </button>\n    <button mat-raised-button style=\"margin-bottom: 20px;\" (click)=\"data(this.initative[0].gsx$id.$t)\"> Data </button>\n  </div>\n\n  <div *ngIf=\"allDataFetched\">\n    <iframe width=475 height=600 id=\"db\" [src]='cleanURL()'></iframe>\n  </div>\n\n</div>\n"
+module.exports = "\n\n<div align=\"center\">\n\n\n\n  <h1>\n      Strategic Initatives Fund Dashboard\n    </h1>\n\n  <div>\n    <button mat-raised-button style=\"margin-bottom: 20px;\" (click)=\"onBack()\"> Go Home </button>\n    <button mat-raised-button style=\"margin-bottom: 20px;\" (click)=\"data(this.initative[0].gsx$id.$t)\"> Data </button>\n  </div>\n\n  <div *ngIf=\"allDataFetched\">\n    <iframe width=475 height=600 id=\"db\" [src]='cleanURL()'></iframe>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -747,6 +751,8 @@ module.exports = "<div align=\"center\">\n\n  <h1>\n      Strategic Initatives F
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng4_loading_spinner__ = __webpack_require__("./node_modules/ng4-loading-spinner/ng4-loading-spinner.umd.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng4_loading_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_ng4_loading_spinner__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -762,8 +768,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var DocumentsComponent = (function () {
-    function DocumentsComponent(http, router, route, sanitizer) {
+    function DocumentsComponent(spinnerService, http, router, route, sanitizer) {
+        this.spinnerService = spinnerService;
         this.http = http;
         this.router = router;
         this.sanitizer = sanitizer;
@@ -775,6 +783,7 @@ var DocumentsComponent = (function () {
         this.initiativeID = (parseInt(this.initiativeID) - 1).toString();
         this.matchId = route.snapshot.params['id'];
         this.sanitizer = sanitizer;
+        this.spinnerService.show();
     }
     DocumentsComponent.prototype.getData = function () {
         return this.http.get(this.apiUrl)
@@ -807,7 +816,7 @@ var DocumentsComponent = (function () {
             template: __webpack_require__("./src/app/pages/documents/documents/documents.component.html"),
             styles: [__webpack_require__("./src/app/pages/documents/documents/documents.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["DomSanitizer"]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_ng4_loading_spinner__["Ng4LoadingSpinnerService"], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["DomSanitizer"]])
     ], DocumentsComponent);
     return DocumentsComponent;
 }());
@@ -819,14 +828,14 @@ var DocumentsComponent = (function () {
 /***/ "./src/app/pages/home/home/home.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".example-form {\n  min-width: 150px;\n  max-width: 500px;\n  width: 100%;\n}\n\n.example-full-width {\n  width: 70%;\n}\n\n.mat-card-content{\n        min-height: 115px;\n}\n\n.example-card {\nmargin-bottom: 15px;\nmargin-left: 15px;\n}\n\n.example-header-image {\n  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');\n  background-size: cover;\n}\n\n.dot {\n  height: 25px;\n  width: 25px;\n  background-color: #40dc7e;\n  border-radius: 50%;\n  position: absolute;\nright: 15px;\n  display: inline-block;\n}\n"
+module.exports = ".example-form {\n  min-width: 150px;\n  max-width: 500px;\n  width: 100%;\n}\n\n.example-full-width {\n  width: 70%;\n}\n\n.mat-card-content{\n        min-height: 115px;\n}\n\n.example-card {\nmargin-bottom: 15px;\nmargin-left: 15px;\n}\n\n.example-header-image {\n  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');\n  background-size: cover;\n}\n\n.dot {\n  height: 25px;\n  width: 25px;\n  /* background-color: #40dc7e; */\n  background-color: grey;\n  border-radius: 50%;\n  position: absolute;\nright: 15px;\n  display: inline-block;\n}\n\n.greendot {\n  height: 25px;\n  width: 25px;\n  /* background-color: #40dc7e; */\n  background-color: #00FF00;\n  border-radius: 50%;\n  position: absolute;\nright: 15px;\n  display: inline-block;\n}\n\n.reddot {\n  height: 25px;\n  width: 25px;\n  /* background-color: #40dc7e; */\n  background-color: red;\n  border-radius: 50%;\n  position: absolute;\nright: 15px;\n  display: inline-block;\n}\n"
 
 /***/ }),
 
 /***/ "./src/app/pages/home/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n\n<div style=\"height:2000px;overflow:scroll\" (scroll)=\"onScroll($event)\">\n  <div style=\"text-align:center\">\n    <h1 style=\"font-size: 40px;\">\n    Strategic Initatives Fund Dashboard\n  </h1>\n\n  </div>\n\n  <div style=\"text-align:center\">\n    <!-- <button (click)=\"projects()\" mat-raised-button color=\"primary\">Projects</button> -->\n    <button style=\"background-color: #8C1D40;\" (click)=\"reports()\" mat-raised-button color=\"primary\">Reports</button>\n    <button style=\"background-color: #8C1D40;\" (click)=\"annual()\" mat-raised-button color=\"primary\">Bi-Annual Reporting</button>\n    <!-- <button (click)=\"docpage()\" mat-raised-button color=\"primary\">Documents</button> -->\n  </div>\n\n  <div *ngIf=\"allDataFetched\" style=\"margin: 25px;\">\n    <google-chart [data]=\"treeChartData\"></google-chart>\n  </div>\n\n  <div align=\"center\" style=\"margin-bottom:20px\">\n    <mat-form-field class=\"example-full-width\">\n      <input matInput [(ngModel)]=\"queryString\" placeholder=\"Type to search...\" id=\"search\" type=\"text\">\n    </mat-form-field>\n    <!-- <input type=\"text\" [(ngModel)]=\"queryString\" id=\"search\" placeholder=\"Type to search...\"> -->\n  </div>\n  <div class=\"container\" fxLayout fxLayoutAlign=\"center\" fxLayoutWrap=\"wrap\" fxLayoutGap=\"0\" fxLayout.xs=\"column\" fxLayoutGap.xs=\"5px\" fxLayout.sm=\"column\" fxLayoutGap.sm=\"5px\">\n    <mat-card *ngFor=\"let state of states | FilterPipe: queryString : searchableList | slice:pageStart:pageEnd\" class=\"example-card\" fxFlex=\"34%\">\n      <mat-card-header>\n        <!-- <div mat-card-avatar class=\"example-header-image\"></div> -->\n        <mat-card-title><b>{{state.gsx$initiative.$t}}</b></mat-card-title>\n        <mat-card-subtitle>{{state.gsx$pi.$t}}</mat-card-subtitle>\n        <div align=\"end\" class=\"dot\"></div>\n\n      </mat-card-header>\n      <!-- <img mat-card-image src=\"https://material.angular.io/assets/img/examples/shiba2.jpg\" alt=\"Photo of a Shiba Inu\"> -->\n      <mat-card-content>\n        <p>\n          {{state.gsx$projectdescription.$t}}\n        </p>\n      </mat-card-content>\n\n\n      <mat-card-actions>\n\n        <div align=\"end\">\n            <span style='position: absolute; left: 20px; bottom: 16px;'>\n             {{state.gsx$type.$t}}\n                </span>\n        <button *ngIf=\"state.gsx$dropboxlink.$t\" mat-button (click)=\"documents(state.gsx$id.$t)\">DOCUMENTS</button>\n        <button mat-button (click)=\"data(state.gsx$id.$t)\">DATA</button>\n    </div>\n      </mat-card-actions>\n\n    </mat-card>\n\n  </div>\n</div>\n\n<!-- <button (click)=\"test()\"> TEST </button> -->\n\n<!-- <div align=\"center\">\n  <iframe width=595 height=842 id=\"db\" src=\"https://www.dropbox.com/s/xp8549melc720ym/Get%20Started%20with%20Dropbox.pdf?raw=1\"></iframe>\n</div> -->\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n\n<div style=\"height:2000px;overflow:scroll\" (scroll)=\"onScroll($event)\">\n  <div style=\"text-align:center\">\n    <h1 style=\"font-size: 40px;\">\n    Strategic Initatives Fund Dashboard\n  </h1>\n\n  </div>\n\n  <div style=\"text-align:center\">\n    <!-- <button (click)=\"projects()\" mat-raised-button color=\"primary\">Projects</button> -->\n    <button style=\"background-color: #8C1D40;\" (click)=\"reports()\" mat-raised-button color=\"primary\">Reports</button>\n    <!-- <button (click)=\"docpage()\" mat-raised-button color=\"primary\">Documents</button> -->\n  </div>\n\n  <div *ngIf=\"allDataFetched\" style=\"margin: 25px;\">\n    <google-chart [data]=\"treeChartData\"></google-chart>\n  </div>\n\n  <div align=\"center\" style=\"margin-bottom:20px\">\n    <mat-form-field class=\"example-full-width\">\n      <input matInput [(ngModel)]=\"queryString\" placeholder=\"Type to search...\" id=\"search\" type=\"text\">\n    </mat-form-field>\n    <!-- <input type=\"text\" [(ngModel)]=\"queryString\" id=\"search\" placeholder=\"Type to search...\"> -->\n  </div>\n  <div class=\"container\" fxLayout fxLayoutAlign=\"center\" fxLayoutWrap=\"wrap\" fxLayoutGap=\"0\" fxLayout.xs=\"column\" fxLayoutGap.xs=\"5px\" fxLayout.sm=\"column\" fxLayoutGap.sm=\"5px\">\n    <mat-card *ngFor=\"let state of states | FilterPipe: queryString : searchableList | slice:pageStart:pageEnd\" class=\"example-card\" fxFlex=\"34%\">\n      <mat-card-header>\n        <!-- <div mat-card-avatar class=\"example-header-image\"></div> -->\n        <mat-card-title><b>{{state.gsx$initiative.$t}}</b></mat-card-title>\n        <mat-card-subtitle>{{state.gsx$pi.$t}}</mat-card-subtitle>\n        <div align=\"end\" [ngClass] = \"state.gsx$type.$t === 'v2.0' && state.gsx$reportinglink.$t ? 'greendot' : ''\"></div>\n        <div align=\"end\" [ngClass] = \"state.gsx$type.$t === 'v2.0' && !state.gsx$reportinglink.$t && state.gsx$reportingdeadlinepast.$t === 'N' ? 'dot' : ''\"></div>\n        <div align=\"end\" [ngClass] = \"state.gsx$type.$t === 'v2.0' && !state.gsx$reportinglink.$t && state.gsx$reportingdeadlinepast.$t === 'Y' ? 'reddot' : ''\"></div>\n\n\n\n      </mat-card-header>\n      <!-- <img mat-card-image src=\"https://material.angular.io/assets/img/examples/shiba2.jpg\" alt=\"Photo of a Shiba Inu\"> -->\n      <mat-card-content>\n        <p>\n          {{state.gsx$projectdescription.$t}}\n        </p>\n      </mat-card-content>\n\n\n      <mat-card-actions>\n\n        <div align=\"end\">\n            <span style='position: absolute; left: 20px; bottom: 16px;'>\n             {{state.gsx$type.$t}}\n                </span>\n        <button *ngIf=\"state.gsx$dropboxlink.$t\" mat-button (click)=\"documents(state.gsx$id.$t)\">DOCUMENTS</button>\n        <button mat-button (click)=\"data(state.gsx$id.$t)\">DATA</button>\n        <button *ngIf=\"state.gsx$reportinglink.$t\" mat-button (click)=\"reporting(state.gsx$id.$t)\">REPORTING</button>\n    </div>\n      </mat-card-actions>\n\n    </mat-card>\n\n  </div>\n</div>\n\n<!-- <button (click)=\"test()\"> TEST </button> -->\n\n<!-- <div align=\"center\">\n  <iframe width=595 height=842 id=\"db\" src=\"https://www.dropbox.com/s/xp8549melc720ym/Get%20Started%20with%20Dropbox.pdf?raw=1\"></iframe>\n</div> -->\n"
 
 /***/ }),
 
@@ -958,11 +967,14 @@ var HomeComponent = (function () {
     HomeComponent.prototype.documents = function (event) {
         this.router.navigate(['/', 'docs', event]);
     };
+    HomeComponent.prototype.reporting = function (event) {
+        this.router.navigate(['/', 'reports', event]);
+    };
     HomeComponent.prototype.projects = function () {
         this.router.navigate(['/', 'projects']);
     };
     HomeComponent.prototype.reports = function () {
-        this.router.navigate(['/', 'reports']);
+        window.open("https://www.dropbox.com/home/Strategic%20Initiative%20Funds/SIF%20Reports", '_blank');
     };
     HomeComponent.prototype.annual = function () {
         this.router.navigate(['/', 'annual']);
@@ -1063,7 +1075,7 @@ module.exports = "\n.mat-list-icon {\n  color: rgba(0, 0, 0, 0.54);\n}\n"
 /***/ "./src/app/pages/reports/reports/reports.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div align=\"center\">\n\n  <h1>\n      Strategic Initatives Fund Dashboard\n    </h1>\n\n  <div>\n    <button mat-raised-button style=\"margin-bottom: 20px;\" (click)=\"onBack()\"> Go Back </button>\n  </div>\n\n\n</div>\n\n<div style=\"margin-left:38%;\">\n<mat-list>\n  <h3 mat-subheader>Reports</h3>\n  <mat-list-item *ngFor=\"let note of notes\">\n\n       <mat-icon mat-list-icon><a style=\"color:grey; text-decoration: none;\" href={{note.link}}>note</a></mat-icon>\n    <h4 mat-line><a style=\"color:grey; text-decoration: none;\" href={{note.link}}>{{note.name}}</a></h4>\n    <p mat-line><a style=\"color:grey;text-decoration: none;\" href={{note.link}}>{{note.updated | date}}</a></p>\n\n  </mat-list-item>\n</mat-list>\n</div>\n"
+module.exports = "\n\n<div align=\"center\">\n\n\n\n  <h1>\n      Reporting\n    </h1>\n\n  <div>\n    <button mat-raised-button style=\"margin-bottom: 20px;\" (click)=\"onBack()\"> Go Home </button>\n    <button mat-raised-button style=\"margin-bottom: 20px;\" (click)=\"data(this.initative[0].gsx$id.$t)\"> Data </button>\n  </div>\n\n  <div *ngIf=\"allDataFetched\">\n    <iframe width=475 height=600 id=\"db\" [src]='cleanURL()'></iframe>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
@@ -1074,6 +1086,11 @@ module.exports = "<div align=\"center\">\n\n  <h1>\n      Strategic Initatives F
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ReportsComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng4_loading_spinner__ = __webpack_require__("./node_modules/ng4-loading-spinner/ng4-loading-spinner.umd.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ng4_loading_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_ng4_loading_spinner__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1086,39 +1103,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
+
 var ReportsComponent = (function () {
-    function ReportsComponent(router, route) {
+    function ReportsComponent(spinnerService, http, router, route, sanitizer) {
+        this.spinnerService = spinnerService;
+        this.http = http;
         this.router = router;
-        this.folders = [
-            {
-                name: 'Photos',
-                updated: new Date('1/1/16'),
-            },
-            {
-                name: 'Recipes',
-                updated: new Date('1/17/16'),
-            },
-            {
-                name: 'Work',
-                updated: new Date('1/28/16'),
-            }
-        ];
-        this.notes = [
-            // {
-            //   name: 'SIF Project Description Report(FY18-20)',
-            //   updated: new Date('12/14/17'),
-            // },
-            {
-                name: 'SIF Project Class Report',
-                updated: new Date('12/17/17'),
-                link: 'https://www.dropbox.com/s/dwpnqzax70bphta/Copy%20of%20SIF%20Project%20Class%20Report%20%28FY18-20%29.xls?dl=0'
-            },
-        ];
+        this.sanitizer = sanitizer;
+        this.apiUrl = "https://spreadsheets.google.com/feeds/list/1ejWQIpPrgNpnIFQ5PoaKrvVLgcb6jua1GZbAWHWXFow/od6/public/values?alt=json";
+        this.sifProjects = {};
+        this.allDataFetched = false;
+        this.reportID = route.snapshot.params['id'];
+        this.initiativeID = route.snapshot.params['id'];
+        this.initiativeID = (parseInt(this.initiativeID) - 1).toString();
+        this.matchId = route.snapshot.params['id'];
+        this.sanitizer = sanitizer;
+        this.spinnerService.show();
     }
+    ReportsComponent.prototype.getData = function () {
+        return this.http.get(this.apiUrl)
+            .map(function (res) { return res.json(); });
+    };
+    ReportsComponent.prototype.getProjects = function () {
+        var _this = this;
+        this.getData().subscribe(function (data) {
+            _this.sifProjects = data.feed.entry;
+            _this.states = _this.sifProjects;
+            _this.initative = _this.states.filter(function (state) { return state.gsx$id.$t === _this.matchId; });
+            _this.allDataFetched = true;
+        });
+    };
     ReportsComponent.prototype.onBack = function () {
         this.router.navigate(['/', 'home']);
     };
+    ReportsComponent.prototype.data = function (event) {
+        this.router.navigate(['/', 'data', event]);
+    };
     ReportsComponent.prototype.ngOnInit = function () {
+        this.getProjects();
+    };
+    ReportsComponent.prototype.cleanURL = function () {
+        return this.sanitizer.bypassSecurityTrustResourceUrl(this.initative[0].gsx$reportinglink.$t);
     };
     ReportsComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -1126,7 +1154,7 @@ var ReportsComponent = (function () {
             template: __webpack_require__("./src/app/pages/reports/reports/reports.component.html"),
             styles: [__webpack_require__("./src/app/pages/reports/reports/reports.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5_ng4_loading_spinner__["Ng4LoadingSpinnerService"], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["DomSanitizer"]])
     ], ReportsComponent);
     return ReportsComponent;
 }());
