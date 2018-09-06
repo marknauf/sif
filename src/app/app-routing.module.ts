@@ -23,12 +23,12 @@ const routes: Routes = [
     component: DocumentsComponent
   },
   {
-    path: 'projects',
-    component: ProjectsComponent
+    path: 'reports/:id',
+    component: ReportsComponent
   },
   {
-    path: 'reports',
-    component: ReportsComponent
+    path: 'projects',
+    component: ProjectsComponent
   },
   {
     path: 'annual',

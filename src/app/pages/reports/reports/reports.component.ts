@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 import {ActivatedRoute} from '@angular/router';
+
+import {Http, Response} from '@angular/http';
+import 'rxjs/add/operator/map';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+
 
 @Component({
   selector: 'app-reports',
@@ -9,51 +15,69 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ReportsComponent implements OnInit {
 
-    title: String;
-    names: any;
+    private apiUrl = "https://spreadsheets.google.com/feeds/list/1ejWQIpPrgNpnIFQ5PoaKrvVLgcb6jua1GZbAWHWXFow/od6/public/values?alt=json";
+    sifProjects: any = {};
+    initative: any[];
+    initiativeID: string;
+    reportID: any;
+    url: any;
     states: any;
-    searchableList: any
-  docID: any;
-  documents: any [];
+    matchId: number;
+    reports: any [];
+    projects: any;
+    allDataFetched: boolean = false;
 
-  folders = [
-    {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Work',
-      updated: new Date('1/28/16'),
+
+    constructor(private spinnerService: Ng4LoadingSpinnerService, private http: Http, private router: Router, route: ActivatedRoute, public sanitizer: DomSanitizer) {
+      this.reportID = route.snapshot.params['id'];
+      this.initiativeID = route.snapshot.params['id'];
+      this.initiativeID = (parseInt(this.initiativeID)-1).toString();
+      this.matchId = route.snapshot.params['id'];
+      this.sanitizer = sanitizer
+          this.spinnerService.show();
+
     }
-  ];
-  notes = [
-    // {
-    //   name: 'SIF Project Description Report(FY18-20)',
-    //   updated: new Date('12/14/17'),
-    // },
-    {
-      name: 'SIF Project Class Report',
-      updated: new Date('12/17/17'),
-      link: 'https://www.dropbox.com/s/dwpnqzax70bphta/Copy%20of%20SIF%20Project%20Class%20Report%20%28FY18-20%29.xls?dl=0'
-  },
-//   {
-//     name: 'SIF Strategic Area Report(FY18-20)',
-//     updated: new Date('12/11/17'),
-// }
-  ];
 
-  constructor(private router: Router, route: ActivatedRoute) {
+    getData(){
+        return this.http.get(this.apiUrl)
+          .map((res: Response) => res.json())
+    }
 
-  }
+    getProjects(){
+        this.getData().subscribe(data => {
 
-  onBack() {
-    this.router.navigate(['/', 'home']);
-  }
-  ngOnInit() {
-  }
+            this.sifProjects = data.feed.entry;
+
+            this.states = this.sifProjects;
+
+
+            this.initative = this.states.filter(
+                 state => state.gsx$id.$t === this.matchId);
+
+                 this.allDataFetched = true;
+        })
+    }
+
+    onBack() {
+      this.router.navigate(['/', 'home']);
+    }
+
+    data(event) {
+
+      this.router.navigate(['/', 'data', event]);
+
+    }
+
+
+    ngOnInit() {
+
+           this.getProjects();
+    }
+
+    cleanURL() {
+       return this.sanitizer.bypassSecurityTrustResourceUrl(this.initative[0].gsx$reportinglink.$t);
+
+     }
+
 
 }

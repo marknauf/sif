@@ -144,6 +144,12 @@ export class HomeComponent {
 
   }
 
+  reporting(event) {
+
+    this.router.navigate(['/', 'reports', event]);
+
+  }
+
   projects() {
 
     this.router.navigate(['/', 'projects']);
