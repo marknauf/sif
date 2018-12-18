@@ -31,6 +31,8 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_docpage_docpage_docpage_component__ = __webpack_require__("./src/app/pages/docpage/docpage/docpage.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home_home_component__ = __webpack_require__("./src/app/pages/home/home/home.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_d3graph_d3graph_component__ = __webpack_require__("./src/app/pages/d3graph/d3graph.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__auth_guard_service__ = __webpack_require__("./src/app/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__callback_callback_component__ = __webpack_require__("./src/app/callback/callback.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -46,10 +48,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
 var routes = [
     {
         path: '',
         component: __WEBPACK_IMPORTED_MODULE_7__pages_home_home_home_component__["a" /* HomeComponent */],
+    },
+    {
+        path: 'callback',
+        component: __WEBPACK_IMPORTED_MODULE_10__callback_callback_component__["a" /* CallbackComponent */],
     },
     {
         path: 'home',
@@ -57,27 +65,33 @@ var routes = [
     },
     {
         path: 'docs/:id',
-        component: __WEBPACK_IMPORTED_MODULE_2__pages_documents_documents_documents_component__["a" /* DocumentsComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_2__pages_documents_documents_documents_component__["a" /* DocumentsComponent */],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_9__auth_guard_service__["a" /* AuthGuardService */]],
     },
     {
         path: 'reports/:id',
-        component: __WEBPACK_IMPORTED_MODULE_4__pages_reports_reports_reports_component__["a" /* ReportsComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_4__pages_reports_reports_reports_component__["a" /* ReportsComponent */],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_9__auth_guard_service__["a" /* AuthGuardService */]],
     },
     {
         path: 'projects',
-        component: __WEBPACK_IMPORTED_MODULE_3__pages_projects_projects_projects_component__["a" /* ProjectsComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_3__pages_projects_projects_projects_component__["a" /* ProjectsComponent */],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_9__auth_guard_service__["a" /* AuthGuardService */]],
     },
     {
         path: 'annual',
-        component: __WEBPACK_IMPORTED_MODULE_5__pages_annual_annual_annual_component__["a" /* AnnualComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_5__pages_annual_annual_annual_component__["a" /* AnnualComponent */],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_9__auth_guard_service__["a" /* AuthGuardService */]],
     },
     {
         path: 'docpage',
-        component: __WEBPACK_IMPORTED_MODULE_6__pages_docpage_docpage_docpage_component__["a" /* DocPageComponent */]
+        component: __WEBPACK_IMPORTED_MODULE_6__pages_docpage_docpage_docpage_component__["a" /* DocPageComponent */],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_9__auth_guard_service__["a" /* AuthGuardService */]],
     },
     {
         path: 'data/:id',
         component: __WEBPACK_IMPORTED_MODULE_8__pages_d3graph_d3graph_component__["a" /* D3graphComponent */],
+        canActivate: [__WEBPACK_IMPORTED_MODULE_9__auth_guard_service__["a" /* AuthGuardService */]],
     },
 ];
 var AppRoutingModule = (function () {
@@ -121,22 +135,30 @@ module.exports = "<router-outlet></router-outlet>\n\n<ng4-loading-spinner> </ng4
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__auth_auth_service__ = __webpack_require__("./src/app/auth/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(auth) {
+        this.auth = auth;
+        this.auth.handleAuthentication();
     }
     AppComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
             template: __webpack_require__("./src/app/app.component.html"),
             styles: [__webpack_require__("./src/app/app.component.css")]
-        })
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__auth_auth_service__["a" /* AuthService */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -171,12 +193,15 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_ng4_loading_spinner__ = __webpack_require__("./node_modules/ng4-loading-spinner/ng4-loading-spinner.umd.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_ng4_loading_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_ng4_loading_spinner__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__app_component__ = __webpack_require__("./src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_documents_documents_documents_component__ = __webpack_require__("./src/app/pages/documents/documents/documents.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__angular_cdk_table__ = __webpack_require__("./node_modules/@angular/cdk/esm5/table.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_d3graph_d3graph_component__ = __webpack_require__("./src/app/pages/d3graph/d3graph.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__auth_auth_service__ = __webpack_require__("./src/app/auth/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__auth_guard_service__ = __webpack_require__("./src/app/auth-guard.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_material__ = __webpack_require__("./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__app_component__ = __webpack_require__("./src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_documents_documents_documents_component__ = __webpack_require__("./src/app/pages/documents/documents/documents.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__angular_cdk_table__ = __webpack_require__("./node_modules/@angular/cdk/esm5/table.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_d3graph_d3graph_component__ = __webpack_require__("./src/app/pages/d3graph/d3graph.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__callback_callback_component__ = __webpack_require__("./src/app/callback/callback.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -207,45 +232,48 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
 var DemoMaterialModule = (function () {
     function DemoMaterialModule() {
     }
     DemoMaterialModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_4__angular_core__["NgModule"])({
             exports: [
-                __WEBPACK_IMPORTED_MODULE_22__angular_cdk_table__["m" /* CdkTableModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["a" /* MatAutocompleteModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["b" /* MatButtonModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["c" /* MatButtonToggleModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["d" /* MatCardModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["e" /* MatCheckboxModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["f" /* MatChipsModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["A" /* MatStepperModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["g" /* MatDatepickerModule */],
+                __WEBPACK_IMPORTED_MODULE_24__angular_cdk_table__["m" /* CdkTableModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["a" /* MatAutocompleteModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["b" /* MatButtonModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["c" /* MatButtonToggleModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["d" /* MatCardModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["e" /* MatCheckboxModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["f" /* MatChipsModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["A" /* MatStepperModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["g" /* MatDatepickerModule */],
                 __WEBPACK_IMPORTED_MODULE_6__angular_flex_layout__["a" /* FlexLayoutModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["h" /* MatDialogModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["i" /* MatExpansionModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["j" /* MatGridListModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["k" /* MatIconModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["l" /* MatInputModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["m" /* MatListModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["n" /* MatMenuModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["o" /* MatNativeDateModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["p" /* MatPaginatorModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["q" /* MatProgressBarModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["r" /* MatProgressSpinnerModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["s" /* MatRadioModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["t" /* MatRippleModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["u" /* MatSelectModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["v" /* MatSidenavModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["x" /* MatSliderModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["w" /* MatSlideToggleModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["y" /* MatSnackBarModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["z" /* MatSortModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["B" /* MatTableModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["C" /* MatTabsModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["D" /* MatToolbarModule */],
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["E" /* MatTooltipModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["h" /* MatDialogModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["i" /* MatExpansionModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["j" /* MatGridListModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["k" /* MatIconModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["l" /* MatInputModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["m" /* MatListModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["n" /* MatMenuModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["o" /* MatNativeDateModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["p" /* MatPaginatorModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["q" /* MatProgressBarModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["r" /* MatProgressSpinnerModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["s" /* MatRadioModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["t" /* MatRippleModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["u" /* MatSelectModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["v" /* MatSidenavModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["x" /* MatSliderModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["w" /* MatSlideToggleModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["y" /* MatSnackBarModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["z" /* MatSortModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["B" /* MatTableModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["C" /* MatTabsModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["D" /* MatToolbarModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["E" /* MatTooltipModule */],
             ],
             declarations: []
         })
@@ -267,20 +295,213 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_12_ng2_google_charts__["a" /* Ng2GoogleChartsModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_forms__["c" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_16__swimlane_ngx_charts__["NgxChartsModule"],
-                __WEBPACK_IMPORTED_MODULE_21__angular_http__["b" /* HttpModule */],
+                __WEBPACK_IMPORTED_MODULE_23__angular_http__["b" /* HttpModule */],
                 DemoMaterialModule,
-                __WEBPACK_IMPORTED_MODULE_18__angular_material__["o" /* MatNativeDateModule */],
+                __WEBPACK_IMPORTED_MODULE_20__angular_material__["o" /* MatNativeDateModule */],
                 __WEBPACK_IMPORTED_MODULE_5__angular_forms__["h" /* ReactiveFormsModule */],
             ],
-            declarations: [__WEBPACK_IMPORTED_MODULE_10__pages_annual_annual_annual_component__["a" /* AnnualComponent */], __WEBPACK_IMPORTED_MODULE_19__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_8__pages_reports_reports_reports_component__["a" /* ReportsComponent */], __WEBPACK_IMPORTED_MODULE_13__pages_docpage_docpage_docpage_component__["a" /* DocPageComponent */], __WEBPACK_IMPORTED_MODULE_23__pages_d3graph_d3graph_component__["a" /* D3graphComponent */], __WEBPACK_IMPORTED_MODULE_11__pages_projects_projects_projects_component__["a" /* ProjectsComponent */], __WEBPACK_IMPORTED_MODULE_9__pages_home_home_home_component__["a" /* HomeComponent */], __WEBPACK_IMPORTED_MODULE_20__pages_documents_documents_documents_component__["a" /* DocumentsComponent */], __WEBPACK_IMPORTED_MODULE_1__filter_pipe__["a" /* FilterPipe */]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_19__app_component__["a" /* AppComponent */]],
-            providers: [__WEBPACK_IMPORTED_MODULE_15_d3_ng2_service__["a" /* D3Service */], __WEBPACK_IMPORTED_MODULE_9__pages_home_home_home_component__["a" /* HomeComponent */]]
+            declarations: [__WEBPACK_IMPORTED_MODULE_10__pages_annual_annual_annual_component__["a" /* AnnualComponent */], __WEBPACK_IMPORTED_MODULE_26__callback_callback_component__["a" /* CallbackComponent */], __WEBPACK_IMPORTED_MODULE_21__app_component__["a" /* AppComponent */], __WEBPACK_IMPORTED_MODULE_8__pages_reports_reports_reports_component__["a" /* ReportsComponent */], __WEBPACK_IMPORTED_MODULE_13__pages_docpage_docpage_docpage_component__["a" /* DocPageComponent */], __WEBPACK_IMPORTED_MODULE_25__pages_d3graph_d3graph_component__["a" /* D3graphComponent */], __WEBPACK_IMPORTED_MODULE_11__pages_projects_projects_projects_component__["a" /* ProjectsComponent */], __WEBPACK_IMPORTED_MODULE_9__pages_home_home_home_component__["a" /* HomeComponent */], __WEBPACK_IMPORTED_MODULE_22__pages_documents_documents_documents_component__["a" /* DocumentsComponent */], __WEBPACK_IMPORTED_MODULE_1__filter_pipe__["a" /* FilterPipe */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_21__app_component__["a" /* AppComponent */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_15_d3_ng2_service__["a" /* D3Service */], __WEBPACK_IMPORTED_MODULE_9__pages_home_home_home_component__["a" /* HomeComponent */], __WEBPACK_IMPORTED_MODULE_18__auth_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_19__auth_guard_service__["a" /* AuthGuardService */]]
         })
     ], AppModule);
     return AppModule;
 }());
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(AppModule);
+
+
+/***/ }),
+
+/***/ "./src/app/auth-guard.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthGuardService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth_auth_service__ = __webpack_require__("./src/app/auth/auth.service.ts");
+// src/app/auth/auth-guard.service.ts
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var AuthGuardService = (function () {
+    function AuthGuardService(auth, router) {
+        this.auth = auth;
+        this.router = router;
+    }
+    AuthGuardService.prototype.canActivate = function () {
+        var returnValue = false;
+        if (this.auth.isAuthenticated()) {
+            returnValue = true;
+        }
+        // if(returnValue == false){
+        //     this.router.navigate(['home']);
+        // }
+        return returnValue;
+    };
+    AuthGuardService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__auth_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]])
+    ], AuthGuardService);
+    return AuthGuardService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth/auth.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__auth0_variables__ = __webpack_require__("./src/app/auth/auth0-variables.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_auth0_js__ = __webpack_require__("./node_modules/auth0-js/dist/auth0.min.esm.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+window.global = window;
+var AuthService = (function () {
+    function AuthService(router) {
+        this.router = router;
+        this.auth0 = new __WEBPACK_IMPORTED_MODULE_3_auth0_js__["a" /* WebAuth */]({
+            clientID: __WEBPACK_IMPORTED_MODULE_1__auth0_variables__["a" /* AUTH_CONFIG */].clientID,
+            domain: __WEBPACK_IMPORTED_MODULE_1__auth0_variables__["a" /* AUTH_CONFIG */].domain,
+            responseType: 'token id_token',
+            redirectUri: __WEBPACK_IMPORTED_MODULE_1__auth0_variables__["a" /* AUTH_CONFIG */].callbackURL
+        });
+    }
+    AuthService.prototype.login = function () {
+        this.auth0.authorize();
+    };
+    AuthService.prototype.handleAuthentication = function () {
+        var _this = this;
+        this.auth0.parseHash(function (err, authResult) {
+            if (authResult && authResult.accessToken && authResult.idToken) {
+                window.location.hash = '';
+                _this.setSession(authResult);
+                _this.router.navigate(['/home']);
+            }
+            else if (err) {
+                _this.router.navigate(['/home']);
+                console.log(err);
+            }
+        });
+    };
+    AuthService.prototype.setSession = function (authResult) {
+        // Set the time that the access token will expire at
+        var expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+        localStorage.setItem('access_token', authResult.accessToken);
+        localStorage.setItem('id_token', authResult.idToken);
+        localStorage.setItem('expires_at', expiresAt);
+    };
+    AuthService.prototype.logout = function () {
+        // Remove tokens and expiry time from localStorage
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('id_token');
+        localStorage.removeItem('expires_at');
+        // Go back to the home route
+        this.router.navigate(['/']);
+    };
+    AuthService.prototype.isAuthenticated = function () {
+        // Check whether the current time is past the
+        // access token's expiry time
+        var expiresAt = JSON.parse(localStorage.getItem('expires_at') || '{}');
+        return new Date().getTime() < expiresAt;
+    };
+    AuthService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]])
+    ], AuthService);
+    return AuthService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/auth/auth0-variables.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AUTH_CONFIG; });
+var AUTH_CONFIG = {
+    clientID: '6PIu45PgCl4h6o2YAYP2jHucZkt8XGGn',
+    domain: 'marknauf.auth0.com',
+    callbackURL: 'http://localhost:4200/callback'
+};
+
+
+/***/ }),
+
+/***/ "./src/app/callback/callback.component.css":
+/***/ (function(module, exports) {
+
+module.exports = ".loading {\n  position: absolute;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  height: 100vh;\n  width: 100vw;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  background-color: #fff;\n}"
+
+/***/ }),
+
+/***/ "./src/app/callback/callback.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"loading\">\n  <img src=\"assets/loading.svg\" alt=\"loading\">\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/callback/callback.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CallbackComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var CallbackComponent = (function () {
+    function CallbackComponent() {
+    }
+    CallbackComponent.prototype.ngOnInit = function () {
+    };
+    CallbackComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-callback',
+            template: __webpack_require__("./src/app/callback/callback.component.html"),
+            styles: [__webpack_require__("./src/app/callback/callback.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], CallbackComponent);
+    return CallbackComponent;
+}());
+
 
 
 /***/ }),
@@ -524,6 +745,10 @@ var D3graphComponent = (function () {
             {
                 "name": "2017",
                 "value": this.initative[0].gsx$acfy2017.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2017.$t.replace(/,/g, ''))
+            },
+            {
+                "name": "2018",
+                "value": this.initative[0].gsx$acfy2018.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2018.$t.replace(/,/g, ''))
             },
         ];
         this.newArray = this.seriesData.filter(function (el) {
@@ -835,7 +1060,7 @@ module.exports = ".example-form {\n  min-width: 150px;\n  max-width: 500px;\n  w
 /***/ "./src/app/pages/home/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n\n<div style=\"height:2000px;overflow:scroll\" (scroll)=\"onScroll($event)\">\n  <div style=\"text-align:center\">\n    <h1 style=\"font-size: 40px;\">\n    Strategic Initatives Fund Dashboard\n  </h1>\n\n  </div>\n\n  <div style=\"text-align:center\">\n    <!-- <button (click)=\"projects()\" mat-raised-button color=\"primary\">Projects</button> -->\n    <button style=\"background-color: #8C1D40;\" (click)=\"reports()\" mat-raised-button color=\"primary\">Reports</button>\n    <!-- <button (click)=\"docpage()\" mat-raised-button color=\"primary\">Documents</button> -->\n  </div>\n\n  <div *ngIf=\"allDataFetched\" style=\"margin: 25px;\">\n    <google-chart [data]=\"treeChartData\"></google-chart>\n  </div>\n\n  <div align=\"center\" style=\"margin-bottom:20px\">\n    <mat-form-field class=\"example-full-width\">\n      <input matInput [(ngModel)]=\"queryString\" placeholder=\"Type to search...\" id=\"search\" type=\"text\">\n    </mat-form-field>\n    <!-- <input type=\"text\" [(ngModel)]=\"queryString\" id=\"search\" placeholder=\"Type to search...\"> -->\n  </div>\n  <div class=\"container\" fxLayout fxLayoutAlign=\"center\" fxLayoutWrap=\"wrap\" fxLayoutGap=\"0\" fxLayout.xs=\"column\" fxLayoutGap.xs=\"5px\" fxLayout.sm=\"column\" fxLayoutGap.sm=\"5px\">\n    <mat-card *ngFor=\"let state of states | FilterPipe: queryString : searchableList | slice:pageStart:pageEnd\" class=\"example-card\" fxFlex=\"34%\">\n      <mat-card-header>\n        <!-- <div mat-card-avatar class=\"example-header-image\"></div> -->\n        <mat-card-title><b>{{state.gsx$initiative.$t}}</b></mat-card-title>\n        <mat-card-subtitle>{{state.gsx$pi.$t}}</mat-card-subtitle>\n        <div align=\"end\" [ngClass] = \"state.gsx$type.$t === 'v2.0' && state.gsx$reportinglink.$t ? 'greendot' : ''\"></div>\n        <div align=\"end\" [ngClass] = \"state.gsx$type.$t === 'v2.0' && !state.gsx$reportinglink.$t && state.gsx$reportingdeadlinepast.$t === 'N' ? 'dot' : ''\"></div>\n        <div align=\"end\" [ngClass] = \"state.gsx$type.$t === 'v2.0' && !state.gsx$reportinglink.$t && state.gsx$reportingdeadlinepast.$t === 'Y' ? 'reddot' : ''\"></div>\n\n\n\n      </mat-card-header>\n      <!-- <img mat-card-image src=\"https://material.angular.io/assets/img/examples/shiba2.jpg\" alt=\"Photo of a Shiba Inu\"> -->\n      <mat-card-content>\n        <p>\n          {{state.gsx$projectdescription.$t}}\n        </p>\n      </mat-card-content>\n\n\n      <mat-card-actions>\n\n        <div align=\"end\">\n            <span style='position: absolute; left: 20px; bottom: 16px;'>\n             {{state.gsx$type.$t}}\n                </span>\n        <button *ngIf=\"state.gsx$dropboxlink.$t\" mat-button (click)=\"documents(state.gsx$id.$t)\">DOCUMENTS</button>\n        <button mat-button (click)=\"data(state.gsx$id.$t)\">DATA</button>\n        <button *ngIf=\"state.gsx$reportinglink.$t\" mat-button (click)=\"reporting(state.gsx$id.$t)\">REPORTING</button>\n    </div>\n      </mat-card-actions>\n\n    </mat-card>\n\n  </div>\n</div>\n\n<!-- <button (click)=\"test()\"> TEST </button> -->\n\n<!-- <div align=\"center\">\n  <iframe width=595 height=842 id=\"db\" src=\"https://www.dropbox.com/s/xp8549melc720ym/Get%20Started%20with%20Dropbox.pdf?raw=1\"></iframe>\n</div> -->\n"
+module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n\n<div style=\"height:2000px;overflow:scroll\" (scroll)=\"onScroll($event)\">\n  <div style=\"text-align:center\">\n    <h1 style=\"font-size: 40px;\">\n    Strategic Initatives Fund Dashboard\n  </h1>\n\n  </div>\n\n  <div style=\"text-align:center\">\n    <!-- <button (click)=\"projects()\" mat-raised-button color=\"primary\">Projects</button> -->\n    <button style=\"background-color: #8C1D40;\" (click)=\"reports()\" mat-raised-button color=\"primary\">Reports</button>\n    <!-- <button (click)=\"docpage()\" mat-raised-button color=\"primary\">Documents</button> -->\n  </div>\n\n  <div *ngIf=\"allDataFetched\" style=\"margin: 25px;\">\n    <google-chart [data]=\"treeChartData\"></google-chart>\n  </div>\n\n  <div align=\"center\" style=\"margin-bottom:20px\">\n    <mat-form-field class=\"example-full-width\">\n      <input matInput [(ngModel)]=\"queryString\" placeholder=\"Type to search...\" id=\"search\" type=\"text\">\n    </mat-form-field>\n    <!-- <input type=\"text\" [(ngModel)]=\"queryString\" id=\"search\" placeholder=\"Type to search...\"> -->\n  </div>\n  <div class=\"container\" fxLayout fxLayoutAlign=\"center\" fxLayoutWrap=\"wrap\" fxLayoutGap=\"0\" fxLayout.xs=\"column\" fxLayoutGap.xs=\"5px\" fxLayout.sm=\"column\" fxLayoutGap.sm=\"5px\">\n    <mat-card *ngFor=\"let state of states | FilterPipe: queryString : searchableList | slice:pageStart:pageEnd\" class=\"example-card\" fxFlex=\"34%\">\n      <mat-card-header>\n        <!-- <div mat-card-avatar class=\"example-header-image\"></div> -->\n        <mat-card-title><b>{{state.gsx$initiative.$t}}</b></mat-card-title>\n        <mat-card-subtitle>{{state.gsx$pi.$t}}</mat-card-subtitle>\n        <div align=\"end\" [ngClass] = \"state.gsx$type.$t === 'v2.0' && state.gsx$reportinglink.$t ? 'greendot' : ''\"></div>\n        <div align=\"end\" [ngClass] = \"state.gsx$type.$t === 'v2.0' && !state.gsx$reportinglink.$t && state.gsx$reportingdeadlinepast.$t === 'N' ? 'dot' : ''\"></div>\n        <div align=\"end\" [ngClass] = \"state.gsx$type.$t === 'v2.0' && !state.gsx$reportinglink.$t && state.gsx$reportingdeadlinepast.$t === 'Y' ? 'reddot' : ''\"></div>\n\n\n\n      </mat-card-header>\n      \n      <mat-card-content>\n        <p>\n          {{state.gsx$projectdescription.$t}}\n        </p>\n      </mat-card-content>\n\n\n      <mat-card-actions>\n\n        <div align=\"end\">\n            <span style='position: absolute; left: 20px; bottom: 16px;'>\n             {{state.gsx$type.$t}}\n                </span>\n        <button *ngIf=\"state.gsx$dropboxlink.$t\" mat-button (click)=\"documents(state.gsx$id.$t)\">DOCUMENTS</button>\n        <button mat-button (click)=\"data(state.gsx$id.$t)\">DATA</button>\n        <button *ngIf=\"state.gsx$reportinglink.$t\" mat-button (click)=\"reporting(state.gsx$id.$t)\">REPORTING</button>\n    </div>\n      </mat-card-actions>\n\n    </mat-card>\n\n  </div>\n</div>\n\n<!-- <button (click)=\"test()\"> TEST </button> -->\n\n<!-- <div align=\"center\">\n  <iframe width=595 height=842 id=\"db\" src=\"https://www.dropbox.com/s/xp8549melc720ym/Get%20Started%20with%20Dropbox.pdf?raw=1\"></iframe>\n</div> -->\n"
 
 /***/ }),
 
@@ -847,8 +1072,9 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth_auth_service__ = __webpack_require__("./src/app/auth/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__("./node_modules/rxjs/_esm5/add/operator/map.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -859,6 +1085,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+// import {map} from 'rxjs/operators/map';
 
 
 
@@ -873,7 +1101,8 @@ var State = (function () {
 }());
 
 var HomeComponent = (function () {
-    function HomeComponent(router, http) {
+    function HomeComponent(authService, router, http) {
+        this.authService = authService;
         this.router = router;
         this.http = http;
         this.apiUrl = "https://spreadsheets.google.com/feeds/list/1ejWQIpPrgNpnIFQ5PoaKrvVLgcb6jua1GZbAWHWXFow/od6/public/values?alt=json";
@@ -986,6 +1215,11 @@ var HomeComponent = (function () {
         this.router.navigate(['/', 'data', event]);
     };
     HomeComponent.prototype.ngOnInit = function () {
+        if (this.authService.isAuthenticated()) {
+        }
+        else {
+            this.authService.login();
+        }
         this.getProjects();
     };
     HomeComponent = __decorate([
@@ -994,7 +1228,7 @@ var HomeComponent = (function () {
             template: __webpack_require__("./src/app/pages/home/home/home.component.html"),
             styles: [__webpack_require__("./src/app/pages/home/home/home.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__auth_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]])
     ], HomeComponent);
     return HomeComponent;
 }());
