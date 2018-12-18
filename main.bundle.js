@@ -450,7 +450,7 @@ var AuthService = (function () {
 var AUTH_CONFIG = {
     clientID: '6PIu45PgCl4h6o2YAYP2jHucZkt8XGGn',
     domain: 'marknauf.auth0.com',
-    callbackURL: 'http://localhost:4200/callback'
+    callbackURL: 'https://marknauf.github.io/sif/callback'
 };
 
 
