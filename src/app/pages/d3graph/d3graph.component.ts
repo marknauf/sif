@@ -148,6 +148,10 @@ createChart(){
                       "name": "2017",
                       "value": this.initative[0].gsx$acfy2017.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2017.$t.replace(/,/g, ''))
                     },
+                    {
+                      "name": "2018",
+                      "value": this.initative[0].gsx$acfy2018.$t == 0 ? 0 : parseFloat(this.initative[0].gsx$acfy2018.$t.replace(/,/g, ''))
+                    },
                   ]
 
 

@@ -30,14 +30,14 @@
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
         <mat-card-title><b>{{state.gsx$initiative.$t}}</b></mat-card-title>
         <mat-card-subtitle>{{state.gsx$pi.$t}}</mat-card-subtitle>
-        <div align="end" [ngClass] = "state.gsx$type.$t === 'v2.0' && state.gsx$reportinglink.$t ? 'greendot' : ''"></div>
-        <div align="end" [ngClass] = "state.gsx$type.$t === 'v2.0' && !state.gsx$reportinglink.$t && state.gsx$reportingdeadlinepast.$t === 'N' ? 'dot' : ''"></div>
-        <div align="end" [ngClass] = "state.gsx$type.$t === 'v2.0' && !state.gsx$reportinglink.$t && state.gsx$reportingdeadlinepast.$t === 'Y' ? 'reddot' : ''"></div>
+        <div align="end" [ngClass] = "state.gsx$type.$t === 'v2.0' && state.gsx$currentreport.$t ? 'greendot' : ''"></div>
+        <div align="end" [ngClass] = "state.gsx$type.$t === 'v2.0' && !state.gsx$currentreport.$t && state.gsx$reportingdeadlinepast.$t === 'N' ? 'dot' : ''"></div>
+        <div align="end" [ngClass] = "state.gsx$type.$t === 'v2.0' && !state.gsx$currentreport.$t && state.gsx$reportingdeadlinepast.$t === 'Y' ? 'reddot' : ''"></div>
 
 
 
       </mat-card-header>
-      <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+      
       <mat-card-content>
         <p>
           {{state.gsx$projectdescription.$t}}
@@ -53,7 +53,8 @@
                 </span>
         <button *ngIf="state.gsx$dropboxlink.$t" mat-button (click)="documents(state.gsx$id.$t)">DOCUMENTS</button>
         <button mat-button (click)="data(state.gsx$id.$t)">DATA</button>
-        <button *ngIf="state.gsx$reportinglink.$t" mat-button (click)="reporting(state.gsx$id.$t)">REPORTING</button>
+        <button *ngIf="state.gsx$currentreport.$t" mat-button (click)="reporting(state.gsx$id.$t)">REPORTING</button>
+        <button *ngIf="!state.gsx$currentreport.$t && state.gsx$pastreport.$t" mat-button (click)="reportingPast(state.gsx$id.$t)">REPORTING</button>
     </div>
       </mat-card-actions>
 

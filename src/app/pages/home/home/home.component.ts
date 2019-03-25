@@ -6,6 +6,7 @@ import { FilterPipe }from '../../../filter.pipe';
 import {Observable} from 'rxjs/Observable';
 import {startWith} from 'rxjs/operators/startWith';
 // import {map} from 'rxjs/operators/map';
+import {AuthService} from '../../../auth/auth.service';
 
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {Http, Response} from '@angular/http';
@@ -35,7 +36,8 @@ export class HomeComponent {
 
   treeData: any;
 
-  constructor(private router: Router, private http: Http) {
+  constructor(public authService: AuthService, private router: Router, private http: Http) {
+    
       // this.getProjects();
     this.title = "SIF Search";
     // let projects = require('../../data/projects.json');
@@ -150,6 +152,12 @@ export class HomeComponent {
 
   }
 
+  reportingPast(event) {
+
+    this.router.navigate(['/', 'reports-past', event]);
+
+  }
+
   projects() {
 
     this.router.navigate(['/', 'projects']);
@@ -181,6 +189,12 @@ export class HomeComponent {
   }
 
   ngOnInit() {
+      if(this.authService.isAuthenticated()){
+
+      }
+      else{
+          this.authService.login();
+      }
       this.getProjects()
   }
 

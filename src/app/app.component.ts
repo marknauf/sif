@@ -7,7 +7,7 @@ import {map} from 'rxjs/operators/map';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { Router } from '@angular/router';
 import {Routes, RouterModule} from '@angular/router';
-
+import {AuthService} from './auth/auth.service';
 
 
 @Component({
@@ -18,4 +18,7 @@ import {Routes, RouterModule} from '@angular/router';
 
 export class AppComponent {
 
+    constructor(public auth: AuthService){
+            this.auth.handleAuthentication();
+    }
 }

@@ -26,6 +26,7 @@
     "@angular/router": "5.0.0",
     "@nebular/theme": "^2.0.0-rc.3",
     "@swimlane/ngx-charts": "7.0.1",
+    "auth0-js": "^9.8.2",
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
     "d3": "^4.12.0",

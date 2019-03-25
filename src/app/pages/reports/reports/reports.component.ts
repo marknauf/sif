@@ -75,7 +75,7 @@ export class ReportsComponent implements OnInit {
     }
 
     cleanURL() {
-       return this.sanitizer.bypassSecurityTrustResourceUrl(this.initative[0].gsx$reportinglink.$t);
+       return this.sanitizer.bypassSecurityTrustResourceUrl(this.initative[0].gsx$currentreport.$t);
 
      }
 
